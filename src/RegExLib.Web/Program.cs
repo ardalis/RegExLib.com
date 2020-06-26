@@ -30,6 +30,9 @@ namespace RegExLib.Web
                     context.Database.EnsureCreated();
                     SeedData.Initialize(services);
 
+                    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    identityContext.Database.EnsureCreated();
+
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     await AppIdentityDbContextSeed.SeedAsync(userManager, roleManager);
