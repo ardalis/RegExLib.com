@@ -32,8 +32,6 @@ namespace RegExLib.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            ConfigureCookieSettings(services);
-
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             string identityConnectionString = Configuration.GetConnectionString("DefaultIdentityConnection");
 
@@ -44,6 +42,8 @@ namespace RegExLib.Web
                     .AddDefaultUI()
                     .AddEntityFrameworkStores<AppIdentityDbContext>()
                     .AddDefaultTokenProviders();
+
+            ConfigureCookieSettings(services);
 
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRazorPages();
@@ -81,8 +81,9 @@ namespace RegExLib.Web
             {
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromHours(1);
-                options.LoginPath = "/Account/Login";
-                options.LogoutPath = "/Account/Logout";
+                options.LoginPath = "/Identity/Account/Login";
+                options.LogoutPath = "/Identity/Account/Logout";
+                options.SlidingExpiration = true;
                 options.Cookie = new CookieBuilder
                 {
                     IsEssential = true // required for auth to work without explicit user consent; adjust to suit your privacy policy
@@ -102,11 +103,14 @@ namespace RegExLib.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            app.UseRouting();
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseRouting();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

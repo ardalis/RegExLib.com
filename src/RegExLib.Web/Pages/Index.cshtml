@@ -8,3 +8,11 @@
 
 <partial name="_LoginPartial" />
 
+@if (User.Identity.IsAuthenticated)
+{
+    <h3>Logged In</h3>
+}
+else
+{
+    <h3>Not Logged In</h3>
+}
