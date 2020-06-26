@@ -23,7 +23,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\src\CleanArchitecture.Web\RegExLib.Web.csproj" />
     <ProjectReference Include="..\..\src\RegExLib.Core\RegExLib.Core.csproj" />
     <ProjectReference Include="..\..\src\RegExLib.SharedKernel\RegExLib.SharedKernel.csproj" />
   </ItemGroup>

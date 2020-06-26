@@ -7,12 +7,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using Microsoft.AspNetCore.Identity;
+using RegExLib.Infrastructure.Identity;
+using System.Threading.Tasks;
 
 namespace RegExLib.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
 
@@ -26,6 +29,13 @@ namespace RegExLib.Web
 //                    context.Database.Migrate();
                     context.Database.EnsureCreated();
                     SeedData.Initialize(services);
+
+                    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    identityContext.Database.EnsureCreated();
+
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    await AppIdentityDbContextSeed.SeedAsync(userManager, roleManager);
                 }
                 catch (Exception ex)
                 {
@@ -48,7 +58,7 @@ namespace RegExLib.Web
             {
                 logging.ClearProviders();
                 logging.AddConsole();
-                // logging.AddAzureWebAppDiagnostics(); add this if deploying to Azure
+                logging.AddAzureWebAppDiagnostics(); // add this if deploying to Azure
             });
         });
 
