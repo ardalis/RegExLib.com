@@ -1,0 +1,39 @@
+name: publish
+
+env:
+  AZURE_WEBAPP_NAME: regexlibcom
+  AZURE_GROUP_NAME: regexlib-resourcegroup
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    
+    - name: Build and test
+      run: dotnet test --configuration Release
+    - name: publish
+      run: dotnet publish ./src/DevBetterWeb.Web/DevBetterWeb.Web.csproj -c Release -o WebApp
+    
+    - name: Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+    # deploy web app using Azure credentials
+    - name: 'Azure webapp deploy'
+      uses: azure/webapps-deploy@v1
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        package: './WebApp' 
