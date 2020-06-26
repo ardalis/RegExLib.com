@@ -23,7 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanArchitecture.UnitTests\RegExLib.UnitTests.csproj" />
+    <ProjectReference Include="..\..\src\RegExLib.Core\RegExLib.Core.csproj" />
+    <ProjectReference Include="..\..\src\RegExLib.Infrastructure\RegExLib.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\RegExLib.SharedKernel\RegExLib.SharedKernel.csproj" />
+    <ProjectReference Include="..\..\src\RegExLib.Web\RegExLib.Web.csproj" />
+    <ProjectReference Include="..\RegExLib.UnitTests\RegExLib.UnitTests.csproj" />
   </ItemGroup>
 
 </Project>

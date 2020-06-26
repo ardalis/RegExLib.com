@@ -19,5 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CleanArchitecture.Core\RegExLib.Core.csproj" />
     <ProjectReference Include="..\CleanArchitecture.SharedKernel\RegExLib.SharedKernel.csproj" />
+    <ProjectReference Include="..\RegExLib.Core\RegExLib.Core.csproj" />
+    <ProjectReference Include="..\RegExLib.SharedKernel\RegExLib.SharedKernel.csproj" />
   </ItemGroup>
 </Project>

@@ -23,6 +23,9 @@
   
   <ItemGroup>
     <ProjectReference Include="..\CleanArchitecture.Infrastructure\RegExLib.Infrastructure.csproj" />
+    <ProjectReference Include="..\RegExLib.Core\RegExLib.Core.csproj" />
+    <ProjectReference Include="..\RegExLib.Infrastructure\RegExLib.Infrastructure.csproj" />
+    <ProjectReference Include="..\RegExLib.SharedKernel\RegExLib.SharedKernel.csproj" />
   </ItemGroup>
   
   <ItemGroup>

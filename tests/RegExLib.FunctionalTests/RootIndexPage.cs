@@ -5,23 +5,23 @@ using Xunit;
 
 namespace RegExLib.FunctionalTests
 {
-    public class HomeControllerIndex : IClassFixture<CustomWebApplicationFactory<Startup>>
+    public class RootIndexPage : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly HttpClient _client;
 
-        public HomeControllerIndex(CustomWebApplicationFactory<Startup> factory)
+        public RootIndexPage(CustomWebApplicationFactory<Startup> factory)
         {
             _client = factory.CreateClient();
         }
 
         [Fact]
-        public async Task ReturnsViewWithCorrectMessage()
+        public async Task ReturnsWithCorrectMessage()
         {
             HttpResponseMessage response = await _client.GetAsync("/");
             response.EnsureSuccessStatusCode();
             string stringResponse = await response.Content.ReadAsStringAsync();
 
-            Assert.Contains("RegExLib.Web", stringResponse);
+            Assert.Contains("RegExLib", stringResponse);
         }
     }
 }
