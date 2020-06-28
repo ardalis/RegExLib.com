@@ -7,13 +7,16 @@ namespace RegExLib.Core.Entities
 {
     public class Author : BaseEntity
     {
-        public string FullName { get; set; }
-        public string Username { get; set; }
-        public string UserId { get; set; }
+        public readonly string FullName;
+        public readonly string Username;
+        public readonly string UserId;
         public List<Expression> Expressions { get; private set; } = new List<Expression>();
 
-        public Author()
+        public Author(string userId, string username, string fullName)
         {
+            UserId = userId;
+            Username = username.Replace("@", "");
+            FullName = fullName;
         }
 
         public Author AddExpression(Expression expression)
