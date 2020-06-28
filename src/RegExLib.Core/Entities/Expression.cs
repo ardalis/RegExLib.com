@@ -7,15 +7,19 @@ namespace RegExLib.Core.Entities
 {
     public class Expression : BaseEntity
     {
-        public int AuthorId { get; set; }
-        public string Title { get; set; }
-        public string Pattern { get; set; }
-        public string Description { get; set; }
-        public Author Author { get; set; }
+        public readonly int AuthorId;
+        public readonly string Title;
+        public readonly string Pattern;
+        public readonly string Description;
+        public readonly Author Author;
 
-        public Expression()
+        public Expression(string title, string pattern, string description, Author author)
         {
-            Author = new Author();
+            Title = title;
+            Pattern = pattern;
+            Description = description;
+            Author = author;
+            AuthorId = author.Id;
         }
 
         public override string ToString()
