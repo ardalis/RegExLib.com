@@ -29,6 +29,16 @@ namespace RegExLib.Core.Entities
             return this;
         }
 
+        public Author AddExpression(IEnumerable<Expression> expressions)
+        {
+            if (expressions != null)
+            {
+                Expressions.AddRange(expressions);
+            }
+
+            return this;
+        }
+
         public override string ToString()
         {
             return string.IsNullOrEmpty(FullName)?string.Empty: FullName;
