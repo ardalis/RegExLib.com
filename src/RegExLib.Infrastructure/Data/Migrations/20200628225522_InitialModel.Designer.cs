@@ -9,7 +9,7 @@ using RegExLib.Infrastructure.Data;
 namespace RegExLib.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200627220743_InitialModel")]
+    [Migration("20200628225522_InitialModel")]
     partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
