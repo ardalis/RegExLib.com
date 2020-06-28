@@ -19,6 +19,7 @@ namespace RegExLib.Core.Entities
             FullName = fullName;
         }
 
+
         public Author AddExpression(Expression expression)
         {
             if (expression != null)

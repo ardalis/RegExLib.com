@@ -22,6 +22,7 @@ namespace RegExLib.Core.Entities
             AuthorId = author.Id;
         }
 
+
         public override string ToString()
         {
             return string.IsNullOrEmpty(Title) ?string.Empty: Title;
