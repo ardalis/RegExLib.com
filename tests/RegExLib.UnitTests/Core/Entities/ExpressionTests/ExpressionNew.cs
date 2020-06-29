@@ -11,50 +11,50 @@ namespace RegExLib.UnitTests.Core.Entities.ExpressionTests
         [Fact]
         public void InitializationThrowsExceptionGivenNullTitle()
         {
-            Assert.Throws<ArgumentNullException>(() => new Expression(null, "userAdmin", "Admin Admin", 1));
+            Assert.Throws<ArgumentNullException>(() => new Expression(null, "pattern", "description", 1));
         }
 
         [Fact]
         public void InitializationThrowsExceptionGivenEmptyTitle()
         {
-            Assert.Throws<ArgumentException>(() => new Expression("", "userAdmin", "Admin Admin", 1));
+            Assert.Throws<ArgumentException>(() => new Expression("", "pattern", "description", 1));
         }
 
         [Fact]
         public void InitializationThrowsExceptionGivenNullPattern()
         {
-            Assert.Throws<ArgumentNullException>(() => new Expression("Title", null, "Admin Admin", 1));
+            Assert.Throws<ArgumentNullException>(() => new Expression("Title", null, "description", 1));
         }
 
         [Fact]
         public void InitializationThrowsExceptionGivenEmptyPattern()
         {
-            Assert.Throws<ArgumentException>(() => new Expression("Title", "", "Admin Admin", 1));
+            Assert.Throws<ArgumentException>(() => new Expression("Title", "", "description", 1));
         }
 
         [Fact]
         public void InitializationThrowsExceptionGivenNullDescription()
         {
-            Assert.Throws<ArgumentNullException>(() => new Expression("Title", "userAdmin", null, 1));
+            Assert.Throws<ArgumentNullException>(() => new Expression("Title", "pattern", null, 1));
         }
 
         [Fact]
         public void InitializationThrowsExceptionGivenEmptyDescription()
         {
-            Assert.Throws<ArgumentException>(() => new Expression("Title", "userAdmin", "", 1));
+            Assert.Throws<ArgumentException>(() => new Expression("Title", "pattern", "", 1));
         }
 
         [Fact]
         public void InitializationSuccessWithGivenValidData()
         {
-            var expression = new Expression("Title", "userAdmin", "Admin Admin", 1);
+            var expression = new Expression("Title", "pattern", "description", 1);
             Assert.Equal("Title", expression.Title);
         }
 
         [Fact]
         public void ToStringReturnTitle()
         {
-            var expression = new Expression("Title", "userAdmin", "Admin Admin", 1);
+            var expression = new Expression("Title", "pattern", "description", 1);
             Assert.Equal("Title", expression.ToString());
         }
 
