@@ -31,7 +31,7 @@ namespace RegExLib.Core.Entities
 
         public override string ToString()
         {
-            Guard.Against.NullOrEmpty(FullName, nameof(FullName));
+            Guard.Against.NullOrWhiteSpace(FullName, nameof(FullName));
             return FullName;
         }
     }

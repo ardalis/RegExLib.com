@@ -23,7 +23,7 @@ namespace RegExLib.Core.Entities
 
         public override string ToString()
         {
-            Guard.Against.NullOrEmpty(Title, nameof(Title));
+            Guard.Against.NullOrWhiteSpace(Title, nameof(Title));
             return Title;
         }
     }
