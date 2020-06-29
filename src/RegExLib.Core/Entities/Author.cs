@@ -27,7 +27,7 @@ namespace RegExLib.Core.Entities
             }
         }
 
-        public void AddExpression(IEnumerable<Expression> expressions)
+        public void AddExpressions(IEnumerable<Expression> expressions)
         {
             if (expressions != null)
             {
