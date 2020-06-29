@@ -15,15 +15,20 @@ namespace RegExLib.Core.Entities
 
         public Expression(string title, string pattern, string description, int authorId)
         {
+            Guard.Against.NullOrWhiteSpace(title, nameof(title));
             Title = title;
+
+            Guard.Against.NullOrWhiteSpace(pattern, nameof(pattern));
             Pattern = pattern;
+
+            Guard.Against.NullOrWhiteSpace(description, nameof(description));
             Description = description;
+
             AuthorId = authorId;
         }
 
         public override string ToString()
         {
-            Guard.Against.NullOrWhiteSpace(Title, nameof(Title));
             return Title;
         }
     }

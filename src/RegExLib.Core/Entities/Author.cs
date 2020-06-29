@@ -18,8 +18,13 @@ namespace RegExLib.Core.Entities
 
         public Author(string userId, string username, string fullName)
         {
+            Guard.Against.NullOrWhiteSpace(userId, nameof(userId));
             UserId = userId;
+
+            Guard.Against.NullOrWhiteSpace(username, nameof(username));
             Username = username.Replace("@", "");
+
+            Guard.Against.NullOrWhiteSpace(fullName, nameof(fullName));
             FullName = fullName;
         }
 
@@ -31,7 +36,6 @@ namespace RegExLib.Core.Entities
 
         public override string ToString()
         {
-            Guard.Against.NullOrWhiteSpace(FullName, nameof(FullName));
             return FullName;
         }
     }
