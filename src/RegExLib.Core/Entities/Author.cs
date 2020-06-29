@@ -19,24 +19,20 @@ namespace RegExLib.Core.Entities
             FullName = fullName;
         }
 
-        public Author AddExpression(Expression expression)
+        public void AddExpression(Expression expression)
         {
             if (expression != null)
             {
                 Expressions.Add(expression);
             }
-
-            return this;
         }
 
-        public Author AddExpression(IEnumerable<Expression> expressions)
+        public void AddExpression(IEnumerable<Expression> expressions)
         {
             if (expressions != null)
             {
                 Expressions.AddRange(expressions);
             }
-
-            return this;
         }
 
         public override string ToString()
