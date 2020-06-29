@@ -27,18 +27,6 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         }
 
         [Fact]
-        public void InitializationThrowsNullExceptionGivenNullFullName()
-        {
-            Assert.Throws<ArgumentNullException>(() => new Author(Guid.NewGuid().ToString(), "userAdmin", null));
-        }
-
-        [Fact]
-        public void InitializationThrowsExceptionGivenEmptyFullName()
-        {
-            Assert.Throws<ArgumentException>(() => new Author(Guid.NewGuid().ToString(), "userAdmin", ""));
-        }
-
-        [Fact]
         public void InitializationSuccessWithGivenValid()
         {
             var author = new Author(Guid.NewGuid().ToString(), "userAdmin", "Admin Admin");
@@ -48,8 +36,8 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         [Fact]
         public void ToStringReturnFullName()
         {
-            var author = new Author(Guid.NewGuid().ToString(), "userAdmin", "Admin Admin");
-            Assert.Equal("Admin Admin", author.ToString());
+            var author = new Author(Guid.NewGuid().ToString(), "userAdmin", null);
+            Assert.Null(author.ToString());
         }
 
         [Fact]
