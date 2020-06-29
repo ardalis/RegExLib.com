@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using RegExLib.Core.Events;
 using RegExLib.Core.Interfaces;
 using RegExLib.SharedKernel;
@@ -10,7 +11,9 @@ namespace RegExLib.Core.Entities
         public string FullName { get; }
         public string Username { get; }
         public string UserId { get; }
-        public List<Expression> Expressions { get; private set; } = new List<Expression>();
+
+        private readonly List<Expression> _expressions = new List<Expression>();
+        public IEnumerable<Expression> Expressions => new ReadOnlyCollection<Expression>(_expressions);
 
         public Author(string userId, string username, string fullName)
         {
@@ -23,7 +26,7 @@ namespace RegExLib.Core.Entities
         {
             if (expression != null)
             {
-                Expressions.Add(expression);
+                _expressions.Add(expression);
             }
         }
 
@@ -31,7 +34,7 @@ namespace RegExLib.Core.Entities
         {
             if (expressions != null)
             {
-                Expressions.AddRange(expressions);
+                _expressions.AddRange(expressions);
             }
         }
 
