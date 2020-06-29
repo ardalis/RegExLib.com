@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using RegExLib.Core.Entities;
+﻿using RegExLib.Core.Entities;
 using Xunit;
 
 namespace RegExLib.UnitTests.Core.Entities.ExpressionTests

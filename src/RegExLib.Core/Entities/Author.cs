@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Ardalis.GuardClauses;
-using JetBrains.Annotations;
-using RegExLib.Core.Events;
-using RegExLib.Core.Interfaces;
 using RegExLib.SharedKernel;
 
 namespace RegExLib.Core.Entities

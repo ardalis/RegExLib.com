@@ -1,5 +1,4 @@
 ﻿using RegExLib.Core.Events;
-using RegExLib.Core.Interfaces;
 using RegExLib.SharedKernel;
 
 namespace RegExLib.Core.Entities

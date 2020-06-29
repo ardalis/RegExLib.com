@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using RegExLib.Core.Entities;
 using Xunit;
 
@@ -36,7 +34,7 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         [Fact]
         public void ToStringReturnFullName()
         {
-            var author = new Author(Guid.NewGuid().ToString(), "userAdmin", null);
+            var author = new Author(Guid.NewGuid().ToString(), "userAdmin", null!);
             Assert.Null(author.ToString());
         }
 

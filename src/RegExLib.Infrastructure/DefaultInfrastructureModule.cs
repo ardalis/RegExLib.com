@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using RegExLib.Core;
 using RegExLib.Core.Interfaces;
-using RegExLib.Core.Services;
 using RegExLib.Infrastructure.Data;
 using RegExLib.SharedKernel.Interfaces;
 using MediatR;

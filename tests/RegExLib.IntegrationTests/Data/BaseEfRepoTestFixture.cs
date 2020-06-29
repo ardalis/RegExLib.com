@@ -1,5 +1,4 @@
-﻿using RegExLib.SharedKernel.Interfaces;
-using RegExLib.Infrastructure.Data;
+﻿using RegExLib.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
