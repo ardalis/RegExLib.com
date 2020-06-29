@@ -9,7 +9,7 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         [Fact]
         public void InitializationThrowsExceptionGivenNullUserId()
         {
-            Assert.Throws<ArgumentNullException>(() => new Author(null, "userAdmin", "Admin Admin"));
+            Assert.Throws<ArgumentNullException>(() => new Author(null!, "userAdmin", "Admin Admin"));
         }
 
         [Fact]

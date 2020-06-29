@@ -10,7 +10,7 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         public void AddExpressionThrowsExceptionGivenNullExpression()
         {
             var author = new Author(Guid.NewGuid().ToString(), "userAdmin", "Admin Admin");
-            Assert.Throws<ArgumentNullException>(() => author.AddExpression(null));
+            Assert.Throws<ArgumentNullException>(() => author.AddExpression(null!));
         }
 
         [Fact]
