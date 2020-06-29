@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Ardalis.GuardClauses;
 using RegExLib.Core.Events;
 using RegExLib.Core.Interfaces;
 using RegExLib.SharedKernel;
@@ -8,9 +9,9 @@ namespace RegExLib.Core.Entities
 {
     public class Author : BaseEntity
     {
-        public string FullName { get; }
-        public string Username { get; }
-        public string UserId { get; }
+        public string FullName { get; private set; }
+        public string Username { get; private set; }
+        public string UserId { get; private set; }
 
         private readonly List<Expression> _expressions = new List<Expression>();
         public IEnumerable<Expression> Expressions => new ReadOnlyCollection<Expression>(_expressions);
@@ -24,23 +25,14 @@ namespace RegExLib.Core.Entities
 
         public void AddExpression(Expression expression)
         {
-            if (expression != null)
-            {
-                _expressions.Add(expression);
-            }
-        }
-
-        public void AddExpressions(IEnumerable<Expression> expressions)
-        {
-            if (expressions != null)
-            {
-                _expressions.AddRange(expressions);
-            }
+            Guard.Against.Null(expression, nameof(expression));
+            _expressions.Add(expression);
         }
 
         public override string ToString()
         {
-            return string.IsNullOrEmpty(FullName)?string.Empty: FullName;
+            Guard.Against.NullOrEmpty(FullName, nameof(FullName));
+            return FullName;
         }
     }
 }
