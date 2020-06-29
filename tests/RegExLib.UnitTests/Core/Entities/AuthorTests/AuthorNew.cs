@@ -15,7 +15,7 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         [Fact]
         public void InitializationThrowsNullExceptionGivenNullUserName()
         {
-            Assert.Throws<ArgumentNullException>(() => new Author(Guid.NewGuid().ToString(), null, "Admin Admin"));
+            Assert.Throws<ArgumentNullException>(() => new Author(Guid.NewGuid().ToString(), null!, "Admin Admin"));
         }
 
         [Fact]
