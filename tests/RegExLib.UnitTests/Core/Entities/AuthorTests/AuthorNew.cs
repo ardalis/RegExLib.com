@@ -35,7 +35,7 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         public void ToStringReturnFullName()
         {
             var author = new Author(Guid.NewGuid().ToString(), "userAdmin", null);
-            Assert.Null(author.ToString());
+            Assert.Equal(string.Empty, author.ToString());
         }
 
         [Fact]

@@ -31,9 +31,6 @@ namespace RegExLib.Core.Entities
             _expressions.Add(expression);
         }
 
-        public override string? ToString()
-        {
-            return FullName;
-        }
+        public override string ToString() => FullName ?? string.Empty;
     }
 }

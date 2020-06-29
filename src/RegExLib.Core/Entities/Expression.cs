@@ -17,9 +17,6 @@ namespace RegExLib.Core.Entities
             AuthorId = authorId;
         }
 
-        public override string? ToString()
-        {
-            return Title;
-        }
+        public override string ToString() => Title ?? string.Empty;
     }
 }
