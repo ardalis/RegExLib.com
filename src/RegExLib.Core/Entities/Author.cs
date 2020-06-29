@@ -16,22 +16,13 @@ namespace RegExLib.Core.Entities
 
         public Author(string userId, string username, string fullName)
         {
-            Validate(userId, username);
-
             UserId = userId;
             Username = username.Replace("@", "");
             FullName = fullName;
         }
 
-        private static void Validate(string userId, string username)
-        {
-            Guard.Against.NullOrWhiteSpace(userId, nameof(userId));
-            Guard.Against.NullOrWhiteSpace(username, nameof(username));
-        }
-
         public void AddExpression(Expression expression)
         {
-            Guard.Against.Null(expression, nameof(expression));
             _expressions.Add(expression);
         }
 

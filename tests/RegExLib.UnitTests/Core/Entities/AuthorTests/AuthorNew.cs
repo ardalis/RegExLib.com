@@ -6,11 +6,6 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
 {
     public class AuthorNew
     {
-        [Fact]
-        public void InitializationThrowsExceptionGivenEmptyUserName()
-        {
-            Assert.Throws<ArgumentException>(() => new Author(Guid.NewGuid().ToString(), "", "Admin Admin"));
-        }
 
         [Fact]
         public void InitializationSuccessWithGivenValid()
