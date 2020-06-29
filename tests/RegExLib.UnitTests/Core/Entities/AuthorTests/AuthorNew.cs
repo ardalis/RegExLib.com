@@ -9,13 +9,13 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         [Fact]
         public void InitializationThrowsExceptionGivenNullUserId()
         {
-            Assert.Throws<ArgumentNullException>(() => new Author(null!, "userAdmin", "Admin Admin"));
+            Assert.Throws<ArgumentNullException>(() => new Author(null, "userAdmin", "Admin Admin"));
         }
 
         [Fact]
         public void InitializationThrowsNullExceptionGivenNullUserName()
         {
-            Assert.Throws<ArgumentNullException>(() => new Author(Guid.NewGuid().ToString(), null!, "Admin Admin"));
+            Assert.Throws<ArgumentNullException>(() => new Author(Guid.NewGuid().ToString(), null, "Admin Admin"));
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         [Fact]
         public void ToStringReturnFullName()
         {
-            var author = new Author(Guid.NewGuid().ToString(), "userAdmin", null!);
+            var author = new Author(Guid.NewGuid().ToString(), "userAdmin", null);
             Assert.Null(author.ToString());
         }
 

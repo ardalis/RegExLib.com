@@ -14,7 +14,7 @@ namespace RegExLib.Core.Entities
         private readonly List<Expression> _expressions = new List<Expression>();
         public IEnumerable<Expression> Expressions => new ReadOnlyCollection<Expression>(_expressions);
 
-        public Author(string userId, string username, string fullName)
+        public Author(string? userId, string? username, string? fullName)
         {
             Guard.Against.NullOrWhiteSpace(userId, nameof(userId));
             UserId = userId;
@@ -25,7 +25,7 @@ namespace RegExLib.Core.Entities
             FullName = fullName;
         }
 
-        public void AddExpression(Expression expression)
+        public void AddExpression(Expression? expression)
         {
             Guard.Against.Null(expression, nameof(expression));
             _expressions.Add(expression);
