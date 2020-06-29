@@ -17,7 +17,7 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         }
 
         [Fact]
-        public void AddExpressionThrowsExceptionGivenValidExpression()
+        public void AddExpressionSuccessWithGivenValidExpression()
         {
             var author = new Author(Guid.NewGuid().ToString(), "userAdmin", "Admin Admin");
             var expression = new Expression("title", "pattern", "description", 5);

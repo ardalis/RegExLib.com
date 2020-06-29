@@ -39,7 +39,7 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
         }
 
         [Fact]
-        public void InitializationThrowsExceptionGivenValid()
+        public void InitializationSuccessWithGivenValid()
         {
             var author = new Author(Guid.NewGuid().ToString(), "userAdmin", "Admin Admin");
             Assert.Equal("userAdmin", author.Username);

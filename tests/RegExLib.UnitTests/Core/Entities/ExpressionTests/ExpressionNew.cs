@@ -45,7 +45,7 @@ namespace RegExLib.UnitTests.Core.Entities.ExpressionTests
         }
 
         [Fact]
-        public void InitializationThrowsExceptionGivenValidData()
+        public void InitializationSuccessWithGivenValidData()
         {
             var expression = new Expression("Title", "userAdmin", "Admin Admin", 1);
             Assert.Equal("Title", expression.Title);
