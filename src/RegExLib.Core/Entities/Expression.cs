@@ -9,7 +9,7 @@ namespace RegExLib.Core.Entities
         public string? Pattern { get; private set; }
         public string? Description { get; private set; }
 
-        public Expression(string? title, string? pattern, string? description, int authorId)
+        public Expression(string title, string pattern, string description, int authorId)
         {
             Title = title;
             Pattern = pattern;

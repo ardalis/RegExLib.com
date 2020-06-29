@@ -7,13 +7,6 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
     public class AuthorNewAddExpression
     {
         [Fact]
-        public void AddExpressionThrowsExceptionGivenNullExpression()
-        {
-            var author = new Author(Guid.NewGuid().ToString(), "userAdmin", "Admin Admin");
-            Assert.Throws<ArgumentNullException>(() => author.AddExpression(null));
-        }
-
-        [Fact]
         public void AddExpressionSuccessWithGivenValidExpression()
         {
             var author = new Author(Guid.NewGuid().ToString(), "userAdmin", "Admin Admin");

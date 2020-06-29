@@ -14,18 +14,22 @@ namespace RegExLib.Core.Entities
         private readonly List<Expression> _expressions = new List<Expression>();
         public IEnumerable<Expression> Expressions => new ReadOnlyCollection<Expression>(_expressions);
 
-        public Author(string? userId, string? username, string? fullName)
+        public Author(string userId, string username, string fullName)
         {
-            Guard.Against.NullOrWhiteSpace(userId, nameof(userId));
+            Validate(userId, username);
+
             UserId = userId;
-
-            Guard.Against.NullOrWhiteSpace(username, nameof(username));
             Username = username.Replace("@", "");
-
             FullName = fullName;
         }
 
-        public void AddExpression(Expression? expression)
+        private static void Validate(string userId, string username)
+        {
+            Guard.Against.NullOrWhiteSpace(userId, nameof(userId));
+            Guard.Against.NullOrWhiteSpace(username, nameof(username));
+        }
+
+        public void AddExpression(Expression expression)
         {
             Guard.Against.Null(expression, nameof(expression));
             _expressions.Add(expression);
