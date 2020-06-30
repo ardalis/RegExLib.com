@@ -15,6 +15,7 @@ namespace RegExLib.Web
 {
   public class Program
   {
+
     public static async Task Main(string[] args)
     {
       var host = CreateHostBuilder(args).Build();
@@ -32,7 +33,7 @@ namespace RegExLib.Web
 
           var identityContext = services.GetRequiredService<AppIdentityDbContext>();
           identityContext.Database.EnsureCreated();
-
+          
           var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
           var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
           await AppIdentityDbContextSeed.SeedAsync(userManager, roleManager);
@@ -49,6 +50,7 @@ namespace RegExLib.Web
 
     public static IHostBuilder CreateHostBuilder(string[] args) => 
       Host.CreateDefaultBuilder(args)
+
     .UseServiceProviderFactory(new AutofacServiceProviderFactory())
     .ConfigureWebHostDefaults(webBuilder =>
     {
