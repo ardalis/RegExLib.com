@@ -1,12 +1,12 @@
 ﻿namespace RegExLib.Core.Constants
 {
-    public class AuthorizationConstants
+  public class AuthorizationConstants
+  {
+    public static class Roles
     {
-        public static class Roles
-        {
-            public const string ADMINISTRATORS = "Administrators";
-        }
-
-        public const string DEFAULT_PASSWORD = "Pass@word1";
+      public const string ADMINISTRATORS = "Administrators";
     }
+
+    public const string DEFAULT_PASSWORD = "Pass@word1";
+  }
 }
