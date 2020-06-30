@@ -1,9 +1,7 @@
-﻿using RegExLib.Core.Entities;
-using RegExLib.Infrastructure.Data;
+﻿using RegExLib.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
 
 namespace RegExLib.Web.Seeds
 {
