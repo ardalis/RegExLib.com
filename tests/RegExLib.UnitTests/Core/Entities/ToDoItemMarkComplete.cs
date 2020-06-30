@@ -1,5 +1,4 @@
-﻿using RegExLib.Core.Entities;
-using RegExLib.Core.Events;
+﻿using RegExLib.Core.Events;
 using System.Linq;
 using Xunit;
 

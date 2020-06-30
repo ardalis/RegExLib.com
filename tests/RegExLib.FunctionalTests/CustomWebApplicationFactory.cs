@@ -1,5 +1,4 @@
-﻿using RegExLib.SharedKernel.Interfaces;
-using RegExLib.Infrastructure.Data;
+﻿using RegExLib.Infrastructure.Data;
 using RegExLib.UnitTests;
 using RegExLib.Web;
 using Microsoft.AspNetCore.Hosting;

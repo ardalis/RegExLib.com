@@ -12,7 +12,10 @@ namespace RegExLib.Web.Pages.ToDoRazorPage
 
         public List<ToDoItem> ToDoItems { get; set; }
 
+#nullable disable
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public IndexModel(IRepository repository)
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         {
             _repository = repository;
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using Ardalis.GuardClauses;
-using RegExLib.Core.Events;
-using RegExLib.Core.Interfaces;
-using RegExLib.SharedKernel;
+﻿using RegExLib.SharedKernel;
 
 namespace RegExLib.Core.Entities
 {
@@ -21,10 +17,6 @@ namespace RegExLib.Core.Entities
             AuthorId = authorId;
         }
 
-        public override string ToString()
-        {
-            Guard.Against.NullOrWhiteSpace(Title, nameof(Title));
-            return Title;
-        }
+        public override string ToString() => Title;
     }
 }

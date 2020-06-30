@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Ardalis.GuardClauses;
-using RegExLib.Core.Events;
-using RegExLib.Core.Interfaces;
 using RegExLib.SharedKernel;
 
 namespace RegExLib.Core.Entities
@@ -25,14 +23,9 @@ namespace RegExLib.Core.Entities
 
         public void AddExpression(Expression expression)
         {
-            Guard.Against.Null(expression, nameof(expression));
             _expressions.Add(expression);
         }
 
-        public override string ToString()
-        {
-            Guard.Against.NullOrWhiteSpace(FullName, nameof(FullName));
-            return FullName;
-        }
+        public override string ToString() => FullName;
     }
 }
