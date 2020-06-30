@@ -7,28 +7,27 @@ namespace RegExLib.Web.ApiModels
   public class ExpressionDTO
   {
     public int Id { get; set; }
-#nullable disable
-#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     [Required]
     public int AuthorId { get; set; }
     [Required]
-    public string Title { get; set; }
+    public string Title { get; private set; }
     [Required]
-    public string Pattern { get; set; }
+    public string Pattern { get; private set; }
     [Required]
-    public string Description { get; set; }
-#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    public string Description { get; private set; }
+
+    public ExpressionDTO(int id, int authorId, string title, string pattern, string description)
+    {
+      Id = id;
+      AuthorId = authorId;
+      Title = title;
+      Pattern = pattern;
+      Description = description;
+    }
 
     public static ExpressionDTO FromExpression(Expression expression)
     {
-      return new ExpressionDTO()
-      {
-        Id = expression.Id,
-        AuthorId = expression.AuthorId,
-        Title = expression.Title,
-        Pattern = expression.Pattern,
-        Description = expression.Description
-      };
+      return new ExpressionDTO(expression.Id, expression.AuthorId, expression.Title, expression.Pattern, expression.Description);
     }
   }
 }
