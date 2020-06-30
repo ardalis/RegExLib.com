@@ -18,3 +18,9 @@ Apply migrations:
 dotnet ef database update -c appdbcontext -p ../RegExLib.Infrastructure/RegExLib.Infrastructure.csproj -s RegExLib.Web.csproj
 dotnet ef database update -c appidentitydbcontext -p ../RegExLib.Infrastructure/RegExLib.Infrastructure.csproj -s RegExLib.Web.csproj
 ```
+
+Generate script:
+
+```powershell
+dotnet ef migrations script --context appidentitydbcontext -p ../RegExLib.Infrastructure/RegExLib.Infrastructure.csproj -s RegExLib.Web.csproj | out-file ./script.sql
+```
