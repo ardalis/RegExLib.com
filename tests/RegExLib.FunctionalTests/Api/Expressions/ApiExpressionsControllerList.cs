@@ -20,18 +20,6 @@ namespace RegExLib.FunctionalTests.Api.expressions
     }
 
     [Fact]
-    public async Task ReturnsOneExpressions()
-    {
-      var response = await _client.GetAsync("/api/expressions");
-      response.EnsureSuccessStatusCode();
-      var stringResponse = await response.Content.ReadAsStringAsync();
-      var result = JsonConvert.DeserializeObject<IEnumerable<ToDoItem>>(stringResponse).ToList();
-
-      Assert.Single(result);
-      Assert.Contains(result, i => i.Title == ExpressionsSeed.Expression1.Title);
-    }
-
-    [Fact]
     public async Task ReturnsPageNumberOneExpressions()
     {
       var response = await _client.GetAsync("/api/expressions?page=0");

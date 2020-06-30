@@ -16,24 +16,15 @@ namespace RegExLib.Web.Api
       _repository = repository;
     }
 
-    // GET: /api/expressions
-    [HttpGet]
-    public async Task<IActionResult> List()
-    {
-      var expressions = (await _repository.ListAsync<Expression>())
-        .Select(ExpressionDTO.FromExpression);
-
-      return Ok(expressions);
-    }
-
     // GET: /api/expressions?page=0
-    [HttpGet("{page:int}")]
-    public async Task<IActionResult> List(int page)
+    [HttpGet]
+    public async Task<IActionResult> List([FromQuery]int page)
     {
+
       var expressions = (await _repository.ListAsync<Expression>(page))
         .Select(ExpressionDTO.FromExpression);
-
       return Ok(expressions);
+      
     }
 
   }
