@@ -4,7 +4,7 @@ using Xunit;
 
 namespace RegExLib.UnitTests.Core.Entities.AuthorTests
 {
-  public class AuthorNewAddExpression
+  public class AuthorAddExpression
   {
     [Fact]
     public void AddExpressionSuccessWithGivenValidExpression()
