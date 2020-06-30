@@ -27,12 +27,5 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
       var author = new Author(Guid.NewGuid().ToString(), "Admin", "Admin Admin");
       Assert.Equal("Admin", author.Username);
     }
-
-    [Fact]
-    public void ToStringReturnFullName()
-    {
-      var author = new Author(Guid.NewGuid().ToString(), "Admin", "Admin Admin");
-      Assert.Equal("Admin Admin", author.ToString());
-    }
   }
 }
