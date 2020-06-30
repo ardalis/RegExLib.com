@@ -2,13 +2,20 @@
 {
   public class ExpressionResponse
   {
-    public int Id { get; set; }
-    public int AuthorId { get; set; }
-#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
-    public string Title { get; set; }
-    public string Pattern { get; set; }
-    public string Description { get; set; }
-#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    public int Id { get; private set; }
+    public int AuthorId { get; private set; }
+    public string Title { get; private set; }
+    public string Pattern { get; private set; }
+    public string Description { get; private set; }
+
+    public ExpressionResponse(int id, string title, string pattern, string description, int authorId)
+    {
+      Id = id;
+      Title = title;
+      Pattern = pattern;
+      Description = description;
+      AuthorId = authorId;
+    }
 
   }
 }

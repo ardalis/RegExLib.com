@@ -28,14 +28,7 @@ namespace RegExLib.Web.Endpoints.Expressions
         public override async Task<ActionResult<List<ExpressionResponse>>> HandleAsync()
         {
             var expressions = (await _repository.ListAsync<Expression>())
-                .Select(expression => new ExpressionResponse
-                {
-                    Id = expression.Id,
-                    AuthorId = expression.AuthorId,
-                    Title = expression.Title,
-                    Pattern = expression.Pattern,
-                    Description = expression.Description
-                });
+                .Select(expression => new ExpressionResponse(expression.Id, expression.Title, expression.Pattern, expression.Description, expression.AuthorId));
 
             return Ok(expressions);
         }
