@@ -1,4 +1,5 @@
 ![.NET Core](https://github.com/ardalis/RegExLib.com/workflows/.NET%20Core/badge.svg)
+![Publish to Azure](https://github.com/ardalis/RegExLib.com/workflows/publish/badge.svg)
 
 # RegExLib.com
 Source code for the regexlib.com regular expression library site.
