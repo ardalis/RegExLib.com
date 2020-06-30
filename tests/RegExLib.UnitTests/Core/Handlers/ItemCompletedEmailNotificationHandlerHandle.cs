@@ -24,7 +24,10 @@ namespace RegExLib.UnitTests.Core.Entities
         [Fact]
         public async Task ThrowsExceptionGivenNullEventArgument()
         {
+#nullable disable
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
             Exception ex = await Assert.ThrowsAsync<ArgumentNullException>(() => _handler.Handle(null, CancellationToken.None));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         }
 
         [Fact]

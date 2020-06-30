@@ -1,5 +1,4 @@
-﻿using RegExLib.SharedKernel.Interfaces;
-using RegExLib.Infrastructure.Data;
+﻿using RegExLib.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -9,7 +8,10 @@ namespace RegExLib.IntegrationTests.Data
 {
     public abstract class BaseEfRepoTestFixture
     {
+#nullable disable
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         protected AppDbContext _dbContext;
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
         protected static DbContextOptions<AppDbContext> CreateNewContextOptions()
         {

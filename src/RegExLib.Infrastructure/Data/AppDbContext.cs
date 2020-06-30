@@ -1,13 +1,10 @@
-﻿using RegExLib.SharedKernel.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using RegExLib.Core.Entities;
 using RegExLib.SharedKernel;
 using Ardalis.EFCore.Extensions;
-using System.Reflection;
-using JetBrains.Annotations;
 using MediatR;
 
 namespace RegExLib.Infrastructure.Data
@@ -19,8 +16,10 @@ namespace RegExLib.Infrastructure.Data
         //public AppDbContext(DbContextOptions options) : base(options)
         //{
         //}
-
+#nullable disable
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator)
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
             : base(options)
         {
             _mediator = mediator;

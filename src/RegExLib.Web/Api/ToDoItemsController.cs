@@ -1,7 +1,6 @@
 ﻿using RegExLib.Core.Entities;
 using RegExLib.SharedKernel.Interfaces;
 using RegExLib.Web.ApiModels;
-using RegExLib.Web.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
