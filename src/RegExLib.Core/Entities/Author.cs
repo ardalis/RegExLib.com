@@ -7,9 +7,9 @@ namespace RegExLib.Core.Entities
 {
     public class Author : BaseEntity
     {
-        public string? FullName { get; private set; }
-        public string? Username { get; private set; }
-        public string? UserId { get; private set; }
+        public string FullName { get; private set; }
+        public string Username { get; private set; }
+        public string UserId { get; private set; }
 
         private readonly List<Expression> _expressions = new List<Expression>();
         public IEnumerable<Expression> Expressions => new ReadOnlyCollection<Expression>(_expressions);
