@@ -10,6 +10,7 @@ using System;
 using Microsoft.AspNetCore.TestHost;
 using System.Linq;
 using MediatR;
+using RegExLib.Web.Seeds;
 
 namespace RegExLib.FunctionalTests
 {
@@ -71,7 +72,9 @@ namespace RegExLib.FunctionalTests
                     try
                     {
                         // Seed the database with test data.
-                        SeedData.PopulateTestData(db);
+                        new ToDoItemsSeed(db).PopulateTestData();
+                        new AuthorsSeed(db).PopulateTestData();
+                        new ExpressionsSeed(db).PopulateTestData();
                     }
                     catch (Exception ex)
                     {

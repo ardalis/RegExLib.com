@@ -26,6 +26,8 @@ namespace RegExLib.Infrastructure.Data
     }
 
     public DbSet<ToDoItem> ToDoItems { get; set; }
+    public DbSet<Expression> Expression { get; set; }
+    public DbSet<Author> Author { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
