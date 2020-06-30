@@ -16,8 +16,10 @@ namespace RegExLib.Infrastructure.Data
         //public AppDbContext(DbContextOptions options) : base(options)
         //{
         //}
-
+#nullable disable
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
         public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator)
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
             : base(options)
         {
             _mediator = mediator;

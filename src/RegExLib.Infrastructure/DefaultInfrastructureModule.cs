@@ -16,13 +16,19 @@ namespace RegExLib.Infrastructure
         private bool _isDevelopment = false;
         private List<Assembly> _assemblies = new List<Assembly>();
 
-        public DefaultInfrastructureModule(bool isDevelopment, Assembly callingAssembly =  null)
+#nullable disable
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        public DefaultInfrastructureModule(bool isDevelopment, Assembly callingAssembly = null)
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         {
             _isDevelopment = isDevelopment;
             var coreAssembly = Assembly.GetAssembly(typeof(DatabasePopulator));
             var infrastructureAssembly = Assembly.GetAssembly(typeof(EfRepository));
+#nullable disable
+#pragma warning disable CS8604 // Possible null reference argument.
             _assemblies.Add(coreAssembly);
-            _assemblies.Add(infrastructureAssembly);
+#pragma warning restore CS8604 // Possible null reference argument.
+            _assemblies.Add(infrastructureAssembly!);
             if (callingAssembly != null)
             {
                 _assemblies.Add(callingAssembly);
