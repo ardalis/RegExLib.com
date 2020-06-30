@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using RegExLib.Web.Seeds;
 using Xunit;
 
-namespace RegExLib.FunctionalTests.Api
+namespace RegExLib.FunctionalTests.Api.ToDoItems
 {
     public class ApiToDoItemsControllerList : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
