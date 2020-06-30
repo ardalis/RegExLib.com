@@ -13,54 +13,54 @@ using System.Threading.Tasks;
 
 namespace RegExLib.Web
 {
-  public class Program
-  {
-    public static async Task Main(string[] args)
+    public class Program
     {
-      var host = CreateHostBuilder(args).Build();
-
-      using (var scope = host.Services.CreateScope())
-      {
-        var services = scope.ServiceProvider;
-
-        try
+        public async static Task Main(string[] args)
         {
-          var context = services.GetRequiredService<AppDbContext>();
-          //                    context.Database.Migrate();
-          context.Database.EnsureCreated();
-          SeedData.Initialize(services);
+            var host = CreateHostBuilder(args).Build();
 
-          var identityContext = services.GetRequiredService<AppIdentityDbContext>();
-          identityContext.Database.EnsureCreated();
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
 
-          var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-          var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-          await AppIdentityDbContextSeed.SeedAsync(userManager, roleManager);
+                try
+                {
+                    var context = services.GetRequiredService<AppDbContext>();
+//                    context.Database.Migrate();
+                    context.Database.EnsureCreated();
+                    SeedData.Initialize(services);
+
+                    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    identityContext.Database.EnsureCreated();
+
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    await AppIdentityDbContextSeed.SeedAsync(userManager, roleManager);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred seeding the DB.");
+                }
+            }
+
+            host.Run();
         }
-        catch (Exception ex)
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+        .ConfigureWebHostDefaults(webBuilder =>
         {
-          var logger = services.GetRequiredService<ILogger<Program>>();
-          logger.LogError(ex, "An error occurred seeding the DB.");
-        }
-      }
-
-      host.Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) => 
-      Host.CreateDefaultBuilder(args)
-    .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-    .ConfigureWebHostDefaults(webBuilder =>
-    {
-      webBuilder
-              .UseStartup<Startup>()
-              .ConfigureLogging(logging =>
-          {
-          logging.ClearProviders();
-          logging.AddConsole();
-          logging.AddAzureWebAppDiagnostics(); // add this if deploying to Azure
+            webBuilder
+                .UseStartup<Startup>()
+                .ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.AddConsole();
+                logging.AddAzureWebAppDiagnostics(); // add this if deploying to Azure
             });
-    });
+        });
 
-  }
+    }
 }
