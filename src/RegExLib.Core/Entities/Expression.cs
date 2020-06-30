@@ -3,7 +3,7 @@
 namespace RegExLib.Core.Entities
 {
     public class Expression : BaseEntity
-    {
+  {
         public int AuthorId { get; private set; }
         public string Title { get; private set; }
         public string Pattern { get; private set; }
