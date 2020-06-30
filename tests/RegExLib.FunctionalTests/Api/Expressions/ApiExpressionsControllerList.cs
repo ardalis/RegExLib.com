@@ -37,7 +37,7 @@ namespace RegExLib.FunctionalTests.Api.expressions
       var response = await _client.GetAsync("/api/expressions?page=0");
       response.EnsureSuccessStatusCode();
       var stringResponse = await response.Content.ReadAsStringAsync();
-      var result = JsonConvert.DeserializeObject<IEnumerable<ToDoItem>>(stringResponse).ToList();
+      var result = JsonConvert.DeserializeObject<IEnumerable<Expression>>(stringResponse).ToList();
 
       Assert.Single(result);
       Assert.Contains(result, i => i.Title == ExpressionsSeed.Expression1.Title);
