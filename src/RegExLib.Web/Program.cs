@@ -15,7 +15,8 @@ namespace RegExLib.Web
 {
   public class Program
   {
-    public async static Task Main(string[] args)
+
+    public static async Task Main(string[] args)
     {
       var host = CreateHostBuilder(args).Build();
 
@@ -47,8 +48,9 @@ namespace RegExLib.Web
       host.Run();
     }
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) => 
+      Host.CreateDefaultBuilder(args)
+
     .UseServiceProviderFactory(new AutofacServiceProviderFactory())
     .ConfigureWebHostDefaults(webBuilder =>
     {
