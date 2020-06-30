@@ -10,24 +10,23 @@ namespace RegExLib.Web.ApiModels
     [Required]
     public int AuthorId { get; set; }
     [Required]
-    public string Title { get; private set; }
+    public string Title { get; set; } = null!;
     [Required]
-    public string Pattern { get; private set; }
+    public string Pattern { get; set; } = null!;
     [Required]
-    public string Description { get; private set; }
+    public string Description { get; set; } = null!;
 
-    public ExpressionDTO(int id, int authorId, string title, string pattern, string description)
-    {
-      Id = id;
-      AuthorId = authorId;
-      Title = title;
-      Pattern = pattern;
-      Description = description;
-    }
 
     public static ExpressionDTO FromExpression(Expression expression)
     {
-      return new ExpressionDTO(expression.Id, expression.AuthorId, expression.Title, expression.Pattern, expression.Description);
+      return new ExpressionDTO()
+      {
+        Id = expression.Id,
+        AuthorId = expression.AuthorId,
+        Title = expression.Title,
+        Pattern = expression.Pattern,
+        Description = expression.Description
+      };
     }
   }
 }
