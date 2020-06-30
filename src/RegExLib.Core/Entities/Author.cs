@@ -26,6 +26,6 @@ namespace RegExLib.Core.Entities
             _expressions.Add(expression);
         }
 
-        public override string ToString() => FullName ?? string.Empty;
+        public override string ToString() => FullName;
     }
 }
