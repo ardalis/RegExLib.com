@@ -10,6 +10,7 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using RegExLib.Infrastructure.Identity;
 using System.Threading.Tasks;
+using RegExLib.Web.Seeds;
 
 namespace RegExLib.Web
 {

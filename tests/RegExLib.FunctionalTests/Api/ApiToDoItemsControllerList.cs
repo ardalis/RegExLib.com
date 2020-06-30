@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using RegExLib.Web.Seeds;
 using Xunit;
 
 namespace RegExLib.FunctionalTests.Api
@@ -27,9 +28,9 @@ namespace RegExLib.FunctionalTests.Api
             var result = JsonConvert.DeserializeObject<IEnumerable<ToDoItem>>(stringResponse).ToList();
 
             Assert.Equal(3, result.Count());
-            Assert.Contains(result, i => i.Title == SeedData.ToDoItem1.Title);
-            Assert.Contains(result, i => i.Title == SeedData.ToDoItem2.Title);
-            Assert.Contains(result, i => i.Title == SeedData.ToDoItem3.Title);
+            Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem1.Title);
+            Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem2.Title);
+            Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem3.Title);
             //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem1));
             //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem2));
             //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem3));
