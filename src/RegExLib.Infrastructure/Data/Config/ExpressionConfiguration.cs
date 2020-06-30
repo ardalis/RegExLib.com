@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace RegExLib.Infrastructure.Data.Config
 {
-    public class ExpressionConfiguration : IEntityTypeConfiguration<Expression>
+  public class ExpressionConfiguration : IEntityTypeConfiguration<Expression>
+  {
+    public void Configure(EntityTypeBuilder<Expression> builder)
     {
-        public void Configure(EntityTypeBuilder<Expression> builder)
-        {
-            builder.Property(t => t.Title)
-                .IsRequired();
-            builder.Property(t => t.Pattern)
-                .IsRequired();
-            builder.Property(t => t.Description)
-                .IsRequired();
-        }
+      builder.Property(t => t.Title)
+          .IsRequired();
+      builder.Property(t => t.Pattern)
+          .IsRequired();
+      builder.Property(t => t.Description)
+          .IsRequired();
     }
+  }
 }

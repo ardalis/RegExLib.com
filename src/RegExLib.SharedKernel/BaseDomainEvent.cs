@@ -3,8 +3,8 @@ using System;
 
 namespace RegExLib.SharedKernel
 {
-    public abstract class BaseDomainEvent : INotification
-    {
-        public DateTime DateOccurred { get; protected set; } = DateTime.UtcNow;
-    }
+  public abstract class BaseDomainEvent : INotification
+  {
+    public DateTime DateOccurred { get; protected set; } = DateTime.UtcNow;
+  }
 }
