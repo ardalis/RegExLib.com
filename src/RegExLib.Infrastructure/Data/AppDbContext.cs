@@ -25,7 +25,6 @@ namespace RegExLib.Infrastructure.Data
       _mediator = mediator;
     }
 
-    public DbSet<ToDoItem> ToDoItems { get; set; }
     public DbSet<Expression> Expression { get; set; }
     public DbSet<Author> Author { get; set; }
     public DbSet<Reaction> Reaction { get; set; }

@@ -17,4 +17,9 @@
     <ProjectReference Include="..\RegExLib.SharedKernel\RegExLib.SharedKernel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="Handlers\" />
+  </ItemGroup>
+
 </Project>
