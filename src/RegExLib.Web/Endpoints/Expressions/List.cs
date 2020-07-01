@@ -18,6 +18,7 @@ namespace RegExLib.Web.Endpoints.Expressions
       _repository = repository;
     }
 
+
     [HttpGet("/Expressions")]
     [SwaggerOperation(
         Summary = "Gets a list of all Expressions by page every page is 25 records",
