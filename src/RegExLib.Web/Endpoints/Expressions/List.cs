@@ -3,7 +3,6 @@ using RegExLib.Core.Entities;
 using RegExLib.SharedKernel.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RegExLib.Web.ApiModels;
