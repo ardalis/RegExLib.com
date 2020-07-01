@@ -16,7 +16,7 @@ namespace RegExLib.Infrastructure
     private bool _isDevelopment = false;
     private List<Assembly> _assemblies = new List<Assembly>();
 
-    public DefaultInfrastructureModule(bool isDevelopment, Assembly callingAssembly = null!)
+    public DefaultInfrastructureModule(bool isDevelopment, Assembly? callingAssembly = null)
     {
       _isDevelopment = isDevelopment;
       //var coreAssembly = Assembly.GetAssembly(typeof(DatabasePopulator));
