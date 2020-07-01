@@ -19,7 +19,7 @@ namespace RegExLib.Web.Endpoints.Expressions
     }
 
 
-    [HttpGet("/Expressions")]
+    [HttpGet("/api/Expressions")]
     [SwaggerOperation(
         Summary = "Gets a list of all Expressions by page every page is 25 records",
         Description = "Gets a list of all Expressions by page every page is 25 records",
