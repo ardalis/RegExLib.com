@@ -10,30 +10,30 @@ using Xunit;
 
 namespace RegExLib.FunctionalTests.Api.ToDoItems
 {
-    public class ApiToDoItemsControllerList : IClassFixture<CustomWebApplicationFactory<Startup>>
+  public class ApiToDoItemsControllerList : IClassFixture<CustomWebApplicationFactory<Startup>>
+  {
+    private readonly HttpClient _client;
+
+    public ApiToDoItemsControllerList(CustomWebApplicationFactory<Startup> factory)
     {
-        private readonly HttpClient _client;
-
-        public ApiToDoItemsControllerList(CustomWebApplicationFactory<Startup> factory)
-        {
-            _client = factory.CreateClient();
-        }
-
-        [Fact]
-        public async Task ReturnsThreeItems()
-        {
-            var response = await _client.GetAsync("/api/todoitems");
-            response.EnsureSuccessStatusCode();
-            var stringResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<IEnumerable<ToDoItem>>(stringResponse).ToList();
-
-            Assert.Equal(3, result.Count());
-            Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem1.Title);
-            Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem2.Title);
-            Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem3.Title);
-            //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem1));
-            //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem2));
-            //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem3));
-        }
+      _client = factory.CreateClient();
     }
+
+    [Fact]
+    public async Task ReturnsThreeItems()
+    {
+      var response = await _client.GetAsync("/api/todoitems");
+      response.EnsureSuccessStatusCode();
+      var stringResponse = await response.Content.ReadAsStringAsync();
+      var result = JsonConvert.DeserializeObject<IEnumerable<ToDoItem>>(stringResponse).ToList();
+
+      Assert.Equal(3, result.Count());
+      Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem1.Title);
+      Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem2.Title);
+      Assert.Contains(result, i => i.Title == ToDoItemsSeed.ToDoItem3.Title);
+      //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem1));
+      //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem2));
+      //Assert.Equal(1, result.Count(a => a == SeedData.ToDoItem3));
+    }
+  }
 }

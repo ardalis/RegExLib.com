@@ -6,21 +6,21 @@ using Xunit;
 
 namespace RegExLib.IntegrationTests.Data
 {
-    public class EfRepositoryAdd : BaseEfRepoTestFixture
+  public class EfRepositoryAdd : BaseEfRepoTestFixture
+  {
+    [Fact]
+    public async Task AddsItemAndSetsId()
     {
-        [Fact]
-        public async Task AddsItemAndSetsId()
-        {
-            var repository = GetRepository();
-            var item = new ToDoItemBuilder().Build();
+      var repository = GetRepository();
+      var item = new ToDoItemBuilder().Build();
 
-            await repository.AddAsync(item);
+      await repository.AddAsync(item);
 
-            var newItem = (await repository.ListAsync<ToDoItem>())
-                            .FirstOrDefault();
+      var newItem = (await repository.ListAsync<ToDoItem>())
+                      .FirstOrDefault();
 
-            Assert.Equal(item, newItem);
-            Assert.True(newItem?.Id > 0);
-        }
+      Assert.Equal(item, newItem);
+      Assert.True(newItem?.Id > 0);
     }
+  }
 }

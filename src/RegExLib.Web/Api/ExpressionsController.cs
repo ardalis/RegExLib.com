@@ -18,13 +18,13 @@ namespace RegExLib.Web.Api
 
     // GET: /api/expressions?page=0
     [HttpGet]
-    public async Task<IActionResult> List([FromQuery]int page)
+    public async Task<IActionResult> List([FromQuery] int page)
     {
 
       var expressions = (await _repository.ListAsync<Expression>(page))
         .Select(ExpressionDTO.FromExpression);
       return Ok(expressions);
-      
+
     }
 
   }

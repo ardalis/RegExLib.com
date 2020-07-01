@@ -3,17 +3,17 @@ using System.Diagnostics;
 
 namespace RegExLib.Web.Api
 {
-    public class MetaController : BaseApiController
+  public class MetaController : BaseApiController
+  {
+    [HttpGet("/info")]
+    public ActionResult<string> Info()
     {
-        [HttpGet("/info")]
-        public ActionResult<string> Info()
-        {
-            var assembly = typeof(Startup).Assembly;
+      var assembly = typeof(Startup).Assembly;
 
-            var creationDate = System.IO.File.GetCreationTime(assembly.Location);
-            var version = FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
+      var creationDate = System.IO.File.GetCreationTime(assembly.Location);
+      var version = FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
 
-            return Ok($"Version: {version}, Last Updated: {creationDate}");
-        }
+      return Ok($"Version: {version}, Last Updated: {creationDate}");
     }
+  }
 }
