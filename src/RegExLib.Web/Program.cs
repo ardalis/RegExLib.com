@@ -1,8 +1,6 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 using RegExLib.Infrastructure.Data;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -10,6 +8,7 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using RegExLib.Infrastructure.Identity;
 using System.Threading.Tasks;
+using RegExLib.Web.Seeds;
 
 namespace RegExLib.Web
 {

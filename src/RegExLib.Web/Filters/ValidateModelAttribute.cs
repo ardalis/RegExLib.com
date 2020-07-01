@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace RegExLib.Web.Filters
 {
-    public class ValidateModelAttribute : ActionFilterAttribute
+  public class ValidateModelAttribute : ActionFilterAttribute
+  {
+    public override void OnActionExecuting(ActionExecutingContext context)
     {
-        public override void OnActionExecuting(ActionExecutingContext context)
-        {
-            if (!context.ModelState.IsValid)
-            {
-                context.Result = new BadRequestObjectResult(context.ModelState);
-            }
-        }
+      if (!context.ModelState.IsValid)
+      {
+        context.Result = new BadRequestObjectResult(context.ModelState);
+      }
     }
+  }
 }

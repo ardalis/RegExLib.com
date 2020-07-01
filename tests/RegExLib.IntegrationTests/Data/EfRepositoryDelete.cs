@@ -6,23 +6,23 @@ using Xunit;
 
 namespace RegExLib.IntegrationTests.Data
 {
-    public class EfRepositoryDelete : BaseEfRepoTestFixture
+  public class EfRepositoryDelete : BaseEfRepoTestFixture
+  {
+    [Fact]
+    public async Task DeletesItemAfterAddingIt()
     {
-        [Fact]
-        public async Task DeletesItemAfterAddingIt()
-        {
-            // add an item
-            var repository = GetRepository();
-            var initialTitle = Guid.NewGuid().ToString();
-            var item = new ToDoItemBuilder().Title(initialTitle).Build();
-            await repository.AddAsync(item);
+      // add an item
+      var repository = GetRepository();
+      var initialTitle = Guid.NewGuid().ToString();
+      var item = new ToDoItemBuilder().Title(initialTitle).Build();
+      await repository.AddAsync(item);
 
-            // delete the item
-            await repository.DeleteAsync(item);
+      // delete the item
+      await repository.DeleteAsync(item);
 
-            // verify it's no longer there
-            Assert.DoesNotContain(await repository.ListAsync<ToDoItem>(),
-                i => i.Title == initialTitle);
-        }
+      // verify it's no longer there
+      Assert.DoesNotContain(await repository.ListAsync<ToDoItem>(),
+          i => i.Title == initialTitle);
     }
+  }
 }

@@ -2,11 +2,11 @@
 
 namespace RegExLib.Web.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
+  {
+    public IActionResult Error()
     {
-        public IActionResult Error()
-        {
-            return View();
-        }
+      return View();
     }
+  }
 }
