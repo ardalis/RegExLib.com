@@ -8,10 +8,7 @@ namespace RegExLib.IntegrationTests.Data
 {
   public abstract class BaseEfRepoTestFixture
   {
-#nullable disable
-#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
-    protected AppDbContext _dbContext;
-#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    protected AppDbContext _dbContext = null!;
 
     protected static DbContextOptions<AppDbContext> CreateNewContextOptions()
     {
