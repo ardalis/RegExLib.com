@@ -14,7 +14,7 @@ namespace RegExLib.Core.Entities
   public class Reaction : BaseEntity
   {
     public int ExpressionId { get; private set; }
-    public ReactionType ReactionType { get; private set; } // could be an enum; limit to Like and Dislike for now
+    public ReactionType ReactionType { get; private set; }
     public DateTime DateLastUpdated { get; private set; } = DateTime.UtcNow;
 
     public Reaction(int expressionId, ReactionType reactionType)
