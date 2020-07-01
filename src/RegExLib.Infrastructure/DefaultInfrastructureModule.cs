@@ -22,11 +22,11 @@ namespace RegExLib.Infrastructure
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     {
       _isDevelopment = isDevelopment;
-      var coreAssembly = Assembly.GetAssembly(typeof(DatabasePopulator));
+      //var coreAssembly = Assembly.GetAssembly(typeof(DatabasePopulator));
       var infrastructureAssembly = Assembly.GetAssembly(typeof(EfRepository));
 #nullable disable
 #pragma warning disable CS8604 // Possible null reference argument.
-      _assemblies.Add(coreAssembly);
+      //_assemblies.Add(coreAssembly);
 #pragma warning restore CS8604 // Possible null reference argument.
       _assemblies.Add(infrastructureAssembly!);
       if (callingAssembly != null)
