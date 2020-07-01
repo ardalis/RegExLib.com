@@ -16,18 +16,15 @@ namespace RegExLib.Infrastructure.Data
     //public AppDbContext(DbContextOptions options) : base(options)
     //{
     //}
-#nullable disable
-#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator)
-#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
             : base(options)
     {
       _mediator = mediator;
     }
 
-    public DbSet<Expression> Expression { get; set; }
-    public DbSet<Author> Author { get; set; }
-    public DbSet<Reaction> Reaction { get; set; }
+    public DbSet<Expression> Expression { get; set; } = null!;
+    public DbSet<Author> Author { get; set; } = null!;
+    public DbSet<Reaction> Reaction { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
