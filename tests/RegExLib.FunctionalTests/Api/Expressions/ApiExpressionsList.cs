@@ -5,16 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using RegExLib.Web.Endpoints.Expressions;
 using RegExLib.Web.Seeds;
 using Xunit;
 
 namespace RegExLib.FunctionalTests.Api.expressions
 {
-  public class ApiExpressionsControllerList : IClassFixture<CustomWebApplicationFactory<Startup>>
+  public class ApiExpressionsList : IClassFixture<CustomWebApplicationFactory<Startup>>
   {
     private readonly HttpClient _client;
 
-    public ApiExpressionsControllerList(CustomWebApplicationFactory<Startup> factory)
+    public ApiExpressionsList(CustomWebApplicationFactory<Startup> factory)
     {
       _client = factory.CreateClient();
     }
@@ -25,10 +26,12 @@ namespace RegExLib.FunctionalTests.Api.expressions
       var response = await _client.GetAsync("/api/expressions?page=0");
       response.EnsureSuccessStatusCode();
       var stringResponse = await response.Content.ReadAsStringAsync();
-      var result = JsonConvert.DeserializeObject<IEnumerable<Expression>>(stringResponse).ToList();
+      var result = JsonConvert.DeserializeObject<PagedExpressionResult>(stringResponse);
 
-      Assert.Single(result);
-      Assert.Contains(result, i => i.Title == ExpressionsSeed.Expression1.Title);
+      Assert.Equal(0, result.Page);
+      Assert.Equal(1, result.TotalRecords);
+      Assert.Single(result.Expressions);
+      Assert.Contains(result.Expressions, i => i.Title == ExpressionsSeed.Expression1.Title);
     }
   }
 }

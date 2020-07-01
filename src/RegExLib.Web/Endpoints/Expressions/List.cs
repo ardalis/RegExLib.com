@@ -6,10 +6,11 @@ using Swashbuckle.AspNetCore.Annotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RegExLib.Web.ApiModels;
 
 namespace RegExLib.Web.Endpoints.Expressions
 {
-  public class List : BaseAsyncEndpoint<List<ExpressionResponse>>
+  public class List : BaseAsyncEndpoint<int, PagedExpressionResult>
   {
     private readonly IRepository _repository;
 
@@ -20,17 +21,17 @@ namespace RegExLib.Web.Endpoints.Expressions
 
     [HttpGet("/Expressions")]
     [SwaggerOperation(
-        Summary = "Gets a list of all Expressions",
-        Description = "Gets a list of all Expressions",
+        Summary = "Gets a list of all Expressions by page every page is 25 records",
+        Description = "Gets a list of all Expressions by page every page is 25 records",
         OperationId = "Expression.List",
         Tags = new[] { "ExpressionEndpoints" })
     ]
-    public override async Task<ActionResult<List<ExpressionResponse>>> HandleAsync()
+    public override async Task<ActionResult<PagedExpressionResult>> HandleAsync([FromQuery] int page)
     {
-      var expressions = (await _repository.ListAsync<Expression>())
-          .Select(expression => new ExpressionResponse(expression.Id, expression.Title, expression.Pattern, expression.Description, expression.AuthorId));
+      var expressions = await _repository.ListAsync<Expression>(page);
+      var result = new PagedExpressionResult(page, expressions.Count, expressions.Select(ExpressionDTO.FromExpression));
 
-      return Ok(expressions);
+      return Ok(result);
     }
   }
 }
