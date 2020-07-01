@@ -42,12 +42,6 @@
     <ProjectReference Include="..\RegExLib.SharedKernel\RegExLib.SharedKernel.csproj" />
   </ItemGroup>
   
-  <ItemGroup>
-    <Compile Update="Endpoints\ToDoItems\Update.NewToDoItemRequest.cs">
-      <DependentUpon>Update.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

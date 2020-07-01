@@ -13,7 +13,6 @@ namespace RegExLib.Web.Seeds
       using var dbContext = new AppDbContext(
         serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null);
 
-      new ToDoItemsSeed(dbContext).PopulateTestData();
       new AuthorsSeed(dbContext).PopulateTestData();
       new ExpressionsSeed(dbContext).PopulateTestData();
     }
