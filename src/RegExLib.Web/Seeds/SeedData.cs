@@ -11,7 +11,7 @@ namespace RegExLib.Web.Seeds
     public static void Initialize(IServiceProvider serviceProvider)
     {
       using var dbContext = new AppDbContext(
-        serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null!);
+        serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null);
 
       new AuthorsSeed(dbContext).PopulateTestData();
       new ExpressionsSeed(dbContext).PopulateTestData();

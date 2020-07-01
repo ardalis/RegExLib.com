@@ -11,12 +11,12 @@ namespace RegExLib.Infrastructure.Data
 {
   public class AppDbContext : DbContext
   {
-    private readonly IMediator _mediator;
+    private readonly IMediator? _mediator;
 
     //public AppDbContext(DbContextOptions options) : base(options)
     //{
     //}
-    public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator)
+    public AppDbContext(DbContextOptions<AppDbContext> options, IMediator? mediator)
             : base(options)
     {
       _mediator = mediator;
