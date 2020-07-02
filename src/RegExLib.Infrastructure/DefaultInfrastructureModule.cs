@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using RegExLib.Core;
 using RegExLib.Core.Interfaces;
 using RegExLib.Infrastructure.Data;
 using RegExLib.SharedKernel.Interfaces;

@@ -28,5 +28,10 @@ namespace RegExLib.Web.ApiModels
         Description = expression.Description
       };
     }
+
+    public static Expression ToExpression(ExpressionDTO expressionDto)
+    {
+      return new Expression(expressionDto.Title, expressionDto.Pattern, expressionDto.Description, expressionDto.AuthorId);
+    }
   }
 }
