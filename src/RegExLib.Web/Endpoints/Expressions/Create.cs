@@ -25,10 +25,10 @@ namespace RegExLib.Web.Endpoints.Expressions
     ]
     public override async Task<ActionResult<CreateExpressionResult>> HandleAsync([FromBody] CreateExpressionCommand request)
     {
-      var expression = ExpressionDTO.ToExpression(request.ExpressionDto);
-      expression = await _repository.AddAsync(expression);
+      var createdExpression = ExpressionDTO.ToExpression(request.ExpressionDto);
+      createdExpression = await _repository.AddAsync(createdExpression);
 
-      var expressionDto = ExpressionDTO.FromExpression(expression);
+      var expressionDto = ExpressionDTO.FromExpression(createdExpression);
       var result = new CreateExpressionResult
       {
         ExpressionDto = expressionDto
