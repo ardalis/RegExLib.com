@@ -33,5 +33,32 @@ namespace RegExLib.FunctionalTests.Api.expressions
       Assert.Single(result.Expressions);
       Assert.Contains(result.Expressions, i => i.Title == ExpressionsSeed.Expression1.Title);
     }
+
+    [Fact]
+    public async Task ReturnsPageNumberLessThanZeroExpressions()
+    {
+      var response = await _client.GetAsync("/api/expressions?page=-1");
+      response.EnsureSuccessStatusCode();
+      var stringResponse = await response.Content.ReadAsStringAsync();
+      var result = JsonConvert.DeserializeObject<PagedExpressionResult>(stringResponse);
+
+      Assert.Equal(0, result.Page);
+      Assert.Equal(1, result.TotalRecords);
+      Assert.Single(result.Expressions);
+      Assert.Contains(result.Expressions, i => i.Title == ExpressionsSeed.Expression1.Title);
+    }
+
+    [Fact]
+    public async Task ReturnsPageNumberMoreThanMaxPagesExpressions()
+    {
+      var response = await _client.GetAsync("/api/expressions?page=2");
+      response.EnsureSuccessStatusCode();
+      var stringResponse = await response.Content.ReadAsStringAsync();
+      var result = JsonConvert.DeserializeObject<PagedExpressionResult>(stringResponse);
+
+      Assert.Equal(2, result.Page);
+      Assert.Equal(0, result.TotalRecords);
+      Assert.Empty(result.Expressions);
+    }
   }
 }

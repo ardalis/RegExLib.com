@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RegExLib.Web.ApiModels;
 
 namespace RegExLib.Web.Endpoints.Expressions
@@ -11,7 +12,7 @@ namespace RegExLib.Web.Endpoints.Expressions
 
     public PagedExpressionResult(int page, int totalRecords, IEnumerable<ExpressionDTO> expressions)
     {
-      Page = page;
+      Page = page < 0? 0: page;
       TotalRecords = totalRecords;
       Expressions = expressions;
     }
