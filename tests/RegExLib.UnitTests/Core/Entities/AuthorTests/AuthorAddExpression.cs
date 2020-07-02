@@ -10,7 +10,13 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
     public void AddExpressionSuccessWithGivenValidExpression()
     {
       var author = new Author(Guid.NewGuid().ToString(), "userAdmin", "Admin Admin");
-      var expression = new Expression("title", "pattern", "description", 5);
+      var expression = new Expression
+      {
+        Title = "Title",
+        Pattern = "pattern",
+        Description = "description",
+        AuthorId = 1
+      };
       author.AddExpression(expression);
       Assert.Contains(author.Expressions, x => x == expression);
     }

@@ -4,10 +4,10 @@ namespace RegExLib.Core.Entities
 {
   public class Expression : BaseEntity
   {
-    public int AuthorId { get; private set; }
-    public string Title { get; private set; } = string.Empty;
-    public string Pattern { get; private set; } = string.Empty;
-    public string Description { get; private set; } = string.Empty;
+    public int AuthorId { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string Pattern { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
 
     public Expression()
     {

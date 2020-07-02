@@ -31,7 +31,13 @@ namespace RegExLib.Web.ApiModels
 
     public static Expression ToExpression(ExpressionDTO expressionDto)
     {
-      return new Expression(expressionDto.Title, expressionDto.Pattern, expressionDto.Description, expressionDto.AuthorId);
+      return new Expression
+      {
+        Title = expressionDto.Title,
+        Pattern = expressionDto.Pattern,
+        Description = expressionDto.Description,
+        AuthorId = expressionDto.AuthorId
+      };
     }
   }
 }

@@ -6,7 +6,14 @@ namespace RegExLib.Web.Seeds
 {
   public class ExpressionsSeed : ISeedData
   {
-    public static readonly Expression Expression1 = new Expression("title", "pattern", "description", 1);
+    public static readonly Expression Expression1 = new Expression
+    { 
+      Title = "Title",
+      Pattern = "pattern",
+      Description = "description",
+      AuthorId = 1
+
+    };
     private readonly AppDbContext _dbContext;
 
     public ExpressionsSeed(AppDbContext dbContext)

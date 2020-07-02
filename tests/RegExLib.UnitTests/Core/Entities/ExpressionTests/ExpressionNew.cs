@@ -8,7 +8,14 @@ namespace RegExLib.UnitTests.Core.Entities.ExpressionTests
     [Fact]
     public void InitializationSuccessWithGivenValidData()
     {
-      var expression = new Expression("Title", "pattern", "description", 1);
+      var expression = new Expression
+      { 
+        Title = "Title",
+        Pattern = "pattern",
+        Description = "description",
+        AuthorId = 1
+
+      };
       Assert.Equal("Title", expression.Title);
     }
   }
