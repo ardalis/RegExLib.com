@@ -28,7 +28,12 @@ namespace RegExLib.Web.Endpoints.Expressions
       var expression = ExpressionDTO.ToExpression(request.ExpressionDto);
       expression = await _repository.AddAsync(expression);
 
-      var result = new CreateExpressionResult(ExpressionDTO.FromExpression(expression));
+      var expressionDto = ExpressionDTO.FromExpression(expression);
+      var result = new CreateExpressionResult
+      {
+        ExpressionDto = expressionDto
+      };
+
       return Ok(result);
     }
   }

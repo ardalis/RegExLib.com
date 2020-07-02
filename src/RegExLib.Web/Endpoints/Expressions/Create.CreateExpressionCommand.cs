@@ -7,6 +7,5 @@ namespace RegExLib.Web.Endpoints.Expressions
   {
     [Required]
     public ExpressionDTO ExpressionDto { get; set; } = new ExpressionDTO();
-
   }
 }

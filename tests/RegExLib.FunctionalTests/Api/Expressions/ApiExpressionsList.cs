@@ -1,4 +1,5 @@
-﻿using RegExLib.Web;
+﻿using System.Linq;
+using RegExLib.Web;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -29,8 +30,8 @@ namespace RegExLib.FunctionalTests.Api.expressions
       var result = JsonConvert.DeserializeObject<PagedExpressionResult>(stringResponse);
 
       Assert.Equal(0, result.Page);
-      Assert.Equal(1, result.TotalRecords);
-      Assert.Single(result.Expressions);
+      Assert.True(result.TotalRecords>0);
+      Assert.True(result.Expressions.Any());
       Assert.Contains(result.Expressions, i => i.Title == ExpressionsSeed.Expression1.Title);
     }
 
@@ -43,8 +44,8 @@ namespace RegExLib.FunctionalTests.Api.expressions
       var result = JsonConvert.DeserializeObject<PagedExpressionResult>(stringResponse);
 
       Assert.Equal(0, result.Page);
-      Assert.Equal(1, result.TotalRecords);
-      Assert.Single(result.Expressions);
+      Assert.True(result.TotalRecords > 0);
+      Assert.True(result.Expressions.Any());
       Assert.Contains(result.Expressions, i => i.Title == ExpressionsSeed.Expression1.Title);
     }
 
