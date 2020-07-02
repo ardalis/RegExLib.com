@@ -29,5 +29,9 @@
     <ProjectReference Include="..\..\src\RegExLib.Core\RegExLib.Core.csproj" />
     <ProjectReference Include="..\..\src\RegExLib.SharedKernel\RegExLib.SharedKernel.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Core\Handlers\" />
+  </ItemGroup>
 
 </Project>
