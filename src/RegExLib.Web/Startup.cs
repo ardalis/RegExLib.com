@@ -11,6 +11,10 @@ using System.Collections.Generic;
 using RegExLib.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using System;
+using AutoMapper;
+using AutoMapper.Configuration;
+using RegExLib.Web.Endpoints.Expressions;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace RegExLib.Web
 {
@@ -40,6 +44,8 @@ namespace RegExLib.Web
               .AddDefaultTokenProviders();
 
       ConfigureCookieSettings(services);
+
+      services.AddAutoMapper(typeof(Startup));
 
       services.AddControllersWithViews().AddNewtonsoftJson();
       services.AddRazorPages();

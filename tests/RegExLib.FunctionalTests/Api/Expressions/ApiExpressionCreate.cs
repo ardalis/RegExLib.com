@@ -27,13 +27,10 @@ namespace RegExLib.FunctionalTests.Api.expressions
     {
       var newExpression = new CreateExpressionCommand
       {
-        ExpressionDto = new ExpressionDTO
-        {
-          Title = "title",
-          Pattern = "pattern",
-          Description = "description",
-          AuthorId = 1
-        }
+        Title = "title",
+        Pattern = "pattern",
+        Description = "description",
+        AuthorId = 1
       };
 
       var response = await _client.PostAsync($"/api/expressions", new StringContent(JsonConvert.SerializeObject(newExpression), Encoding.UTF8, "application/json"));
@@ -43,10 +40,10 @@ namespace RegExLib.FunctionalTests.Api.expressions
       var result = JsonConvert.DeserializeObject<CreateExpressionResult>(stringResponse);
 
       Assert.NotNull(result);
-      Assert.Equal(result.ExpressionDto.Title, newExpression.ExpressionDto.Title);
-      Assert.Equal(result.ExpressionDto.Pattern, newExpression.ExpressionDto.Pattern);
-      Assert.Equal(result.ExpressionDto.Description, newExpression.ExpressionDto.Description);
-      Assert.Equal(result.ExpressionDto.AuthorId, newExpression.ExpressionDto.AuthorId);
+      Assert.Equal(result.Title, newExpression.Title);
+      Assert.Equal(result.Pattern, newExpression.Pattern);
+      Assert.Equal(result.Description, newExpression.Description);
+      Assert.Equal(result.AuthorId, newExpression.AuthorId);
     }
   }
 }

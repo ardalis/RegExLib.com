@@ -2,21 +2,17 @@
 
 namespace RegExLib.Core.Entities
 {
-    public class Expression : BaseEntity
+  public class Expression : BaseEntity
   {
-        public int AuthorId { get; private set; }
-        public string Title { get; private set; }
-        public string Pattern { get; private set; }
-        public string Description { get; private set; }
+    public int AuthorId { get; private set; }
+    public string Title { get; private set; } = string.Empty;
+    public string Pattern { get; private set; } = string.Empty;
+    public string Description { get; private set; } = string.Empty;
 
-        public Expression(string title, string pattern, string description, int authorId)
-        {
-            Title = title;
-            Pattern = pattern;
-            Description = description;
-            AuthorId = authorId;
-        }
-
-        public override string ToString() => Title;
+    public Expression()
+    {
     }
+
+    public override string ToString() => Title;
+  }
 }
