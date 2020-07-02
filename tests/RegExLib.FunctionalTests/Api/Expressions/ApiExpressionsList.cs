@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.TestHost;
 using RegExLib.Web.Endpoints.Expressions;
 using RegExLib.Web.Seeds;
 using Xunit;
@@ -14,7 +15,9 @@ namespace RegExLib.FunctionalTests.Api.expressions
 
     public ApiExpressionsList(CustomWebApplicationFactory<Startup> factory)
     {
-      _client = factory.CreateClient();
+      _client = factory
+        .WithWebHostBuilder(builder => builder.UseSolutionRelativeContentRoot(""))
+        .CreateClient();
     }
 
     [Fact]

@@ -1,6 +1,7 @@
 ﻿using RegExLib.Web;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.TestHost;
 using Xunit;
 
 namespace RegExLib.FunctionalTests
@@ -11,7 +12,9 @@ namespace RegExLib.FunctionalTests
 
     public RootIndexPage(CustomWebApplicationFactory<Startup> factory)
     {
-      _client = factory.CreateClient();
+      _client = factory
+        .WithWebHostBuilder(builder => builder.UseSolutionRelativeContentRoot(""))
+        .CreateClient();
     }
 
     [Fact]

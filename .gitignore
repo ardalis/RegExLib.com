@@ -11,6 +11,9 @@
 *.sln.docstates
 *.ncrunchsolution
 *.ncrunchsolution.user
+*.ncrunchproject
+*.ncrunchproject.user
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
