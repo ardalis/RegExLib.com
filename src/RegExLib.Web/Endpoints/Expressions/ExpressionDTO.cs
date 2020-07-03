@@ -28,16 +28,5 @@ namespace RegExLib.Web.Endpoints.Expressions
         Description = expression.Description
       };
     }
-
-    public static Expression ToExpression(ExpressionDTO expressionDto)
-    {
-      return new Expression
-      {
-        Title = expressionDto.Title,
-        Pattern = expressionDto.Pattern,
-        Description = expressionDto.Description,
-        AuthorId = expressionDto.AuthorId
-      };
-    }
   }
 }
