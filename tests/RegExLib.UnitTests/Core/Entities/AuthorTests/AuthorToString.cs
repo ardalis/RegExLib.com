@@ -6,11 +6,22 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
 {
   public class AuthorToString
   {
+    private readonly string _username;
+    private readonly string _fullName;
+
+    public AuthorToString()
+    {
+      _username = "userAdmin";
+      _fullName = "Admin Admin";
+    }
+
     [Fact]
     public void ToStringReturnFullName()
     {
-      var author = new Author(Guid.NewGuid().ToString(), "Admin", "Admin Admin");
-      Assert.Equal("Admin Admin", author.ToString());
+      const string expected = "Admin Admin";
+
+      var author = new Author(Guid.NewGuid().ToString(), _username, _fullName);
+      Assert.Equal(expected, author.ToString());
     }
   }
 }

@@ -5,18 +5,33 @@ namespace RegExLib.UnitTests.Core.Entities.ExpressionTests
 {
   public class ExpressionNew
   {
+    private readonly string _title;
+    private readonly string _pattern;
+    private readonly string _description;
+    private readonly int _authorId;
+
+    public ExpressionNew()
+    {
+      _title = "title";
+      _pattern = "pattern";
+      _description = "description";
+      _authorId = 1;
+    }
+
     [Fact]
     public void InitializationSuccessWithGivenValidData()
     {
       var expression = new Expression
       { 
-        Title = "Title",
-        Pattern = "pattern",
-        Description = "description",
-        AuthorId = 1
+        Title = _title,
+        Pattern = _pattern,
+        Description = _description,
+        AuthorId = _authorId
 
       };
-      Assert.Equal("Title", expression.Title);
+      const string expected = "title";
+
+      Assert.Equal(expected, expression.Title);
     }
   }
 }
