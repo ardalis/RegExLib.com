@@ -10,12 +10,12 @@ namespace RegExLib.Web.Endpoints.Expressions
   public class Create : BaseAsyncEndpoint<CreateExpressionCommand, CreateExpressionResult>
   {
     private readonly IRepository _repository;
-    private readonly IMapper _mapper;
+    private readonly CreateExpressionAssembler _assembler;
 
     public Create(IRepository repository, IMapper mapper)
     {
       _repository = repository;
-      _mapper = mapper;
+      _assembler = new CreateExpressionAssembler(mapper);
     }
 
     [HttpPost("/api/expressions")]
@@ -27,10 +27,11 @@ namespace RegExLib.Web.Endpoints.Expressions
     ]
     public override async Task<ActionResult<CreateExpressionResult>> HandleAsync([FromBody] CreateExpressionCommand request)
     {
-      var createdExpression = request.ToExpression(_mapper);
+      
+      var createdExpression = _assembler.WriteEntity(request);
       createdExpression = await _repository.AddAsync(createdExpression);
 
-      return Ok(CreateExpressionResult.FromExpression(_mapper, createdExpression));
+      return Ok(_assembler.FromExpression(createdExpression));
     }
   }
 }

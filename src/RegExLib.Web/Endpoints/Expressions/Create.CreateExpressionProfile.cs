@@ -3,9 +3,9 @@ using AutoMapper;
 
 namespace RegExLib.Web.Endpoints.Expressions
 {
-  public class ExpressionProfile : Profile
+  public class CreateExpressionProfile : Profile
   {
-    public ExpressionProfile()
+    public CreateExpressionProfile()
     {
       CreateMap<CreateExpressionCommand, Expression>();
       CreateMap<Expression, CreateExpressionResult>();

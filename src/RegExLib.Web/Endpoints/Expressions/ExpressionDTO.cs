@@ -16,17 +16,5 @@ namespace RegExLib.Web.Endpoints.Expressions
     [Required]
     public string Description { get; set; } = null!;
 
-
-    public static ExpressionDTO FromExpression(Expression expression)
-    {
-      return new ExpressionDTO()
-      {
-        Id = expression.Id,
-        AuthorId = expression.AuthorId,
-        Title = expression.Title,
-        Pattern = expression.Pattern,
-        Description = expression.Description
-      };
-    }
   }
 }
