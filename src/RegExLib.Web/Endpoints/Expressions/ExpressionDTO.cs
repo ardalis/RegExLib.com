@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using RegExLib.Core.Entities;
 
 namespace RegExLib.Web.Endpoints.Expressions
 {

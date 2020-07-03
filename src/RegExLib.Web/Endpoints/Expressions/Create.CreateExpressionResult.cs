@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using RegExLib.Core.Entities;
-
-namespace RegExLib.Web.Endpoints.Expressions
+﻿namespace RegExLib.Web.Endpoints.Expressions
 {
   public class CreateExpressionResult : CreateExpressionCommand
   {
