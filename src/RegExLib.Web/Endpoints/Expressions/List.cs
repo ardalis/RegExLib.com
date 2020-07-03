@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Linq;
 using System.Threading.Tasks;
-using RegExLib.Web.ApiModels;
 
 namespace RegExLib.Web.Endpoints.Expressions
 {

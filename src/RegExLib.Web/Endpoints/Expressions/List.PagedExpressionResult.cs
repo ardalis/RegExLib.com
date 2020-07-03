@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using RegExLib.Web.ApiModels;
 
 namespace RegExLib.Web.Endpoints.Expressions
 {

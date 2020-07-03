@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using RegExLib.Core.Entities;
 
-namespace RegExLib.Web.ApiModels
+namespace RegExLib.Web.Endpoints.Expressions
 {
   // Note: doesn't expose events or behavior
   public class ExpressionDTO

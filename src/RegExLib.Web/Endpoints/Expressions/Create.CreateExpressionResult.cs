@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using RegExLib.Core.Entities;
-using RegExLib.Web.ApiModels;
 
 namespace RegExLib.Web.Endpoints.Expressions
 {

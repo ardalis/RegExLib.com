@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
 using AutoMapper;
-using RegExLib.Core.Entities;
 using RegExLib.SharedKernel.Interfaces;
-using RegExLib.Web.ApiModels;
 
 namespace RegExLib.Web.Endpoints.Expressions
 {
