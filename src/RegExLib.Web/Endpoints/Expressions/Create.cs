@@ -29,14 +29,10 @@ namespace RegExLib.Web.Endpoints.Expressions
     ]
     public override async Task<ActionResult<CreateExpressionResult>> HandleAsync([FromBody] CreateExpressionCommand request)
     {
-      var createdExpression = new Expression();
-      _mapper.Map(request, createdExpression);
+      var createdExpression = request.ToExpression(_mapper);
       createdExpression = await _repository.AddAsync(createdExpression);
 
-      var result = new CreateExpressionResult();
-      _mapper.Map(createdExpression, result);
-
-      return Ok(result);
+      return Ok(CreateExpressionResult.FromExpression(_mapper, createdExpression));
     }
   }
 }
