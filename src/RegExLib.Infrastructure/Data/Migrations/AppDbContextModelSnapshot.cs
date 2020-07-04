@@ -3,6 +3,8 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using RegExLib.Infrastructure.Data;
 
 namespace RegExLib.Infrastructure.Data.Migrations
 {
@@ -89,29 +91,6 @@ namespace RegExLib.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Reaction");
-                });
-
-            modelBuilder.Entity("RegExLib.Core.Entities.ToDoItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDone")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ToDoItems");
                 });
 
             modelBuilder.Entity("RegExLib.Core.Entities.Expression", b =>

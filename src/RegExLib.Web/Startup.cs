@@ -11,7 +11,14 @@ using System.Collections.Generic;
 using RegExLib.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Text;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
+using RegExLib.Core.Constants;
+using RegExLib.Core.Interfaces;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace RegExLib.Web
@@ -43,16 +50,79 @@ namespace RegExLib.Web
 
       ConfigureCookieSettings(services);
 
-      services.AddAutoMapper(typeof(Startup));
+      services.AddAutoMapper(typeof(Startup).Assembly);
 
       services.AddControllersWithViews().AddNewtonsoftJson();
       services.AddRazorPages();
 
+      services.AddScoped<ITokenClaimsService, IdentityTokenClaimService>();
+
+      var key = Encoding.ASCII.GetBytes(AuthorizationConstants.JWT_SECRET_KEY);
+      services.AddAuthentication(config =>
+        {
+          config.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+          config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+          config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+          config.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(x =>
+        {
+          x.RequireHttpsMetadata = true;
+          x.SaveToken = true;
+          x.TokenValidationParameters = new TokenValidationParameters
+          {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience = false
+          };
+        });
+
       services.AddSwaggerGen(c =>
       {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"});
         c.EnableAnnotations();
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+          Description = @"Insert your username and password to access secure api.",
+          Name = "Authorization",
+          In = ParameterLocation.Header,
+          Type = SecuritySchemeType.OAuth2,
+          Extensions = new Dictionary<string, IOpenApiExtension>
+          {
+            { "x-tokenName", new OpenApiString("token") }
+          },
+          Flows = new OpenApiOAuthFlows
+          {
+            Password = new OpenApiOAuthFlow
+            {
+              TokenUrl = new Uri("/api/authenticate", UriKind.Relative),
+            }
+
+          },
+          Scheme = "Bearer"
+        });
+
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+        {
+          {
+            new OpenApiSecurityScheme
+            {
+              Reference = new OpenApiReference
+              {
+                Type = ReferenceType.SecurityScheme,
+                Id = "Bearer"
+              },
+              Scheme = "oauth2",
+              Name = "Bearer",
+              In = ParameterLocation.Header,
+
+            },
+            new List<string>()
+          }
+        });
       });
+
 
       // add list services for diagnostic purposes - see https://github.com/ardalis/AspNetCoreStartupServices
       services.Configure<ServiceConfig>(config =>
@@ -116,7 +186,11 @@ namespace RegExLib.Web
       app.UseSwagger();
 
       // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
-      app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
+      app.UseSwaggerUI(options =>
+      {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        options.InjectStylesheet("/swagger/ui/style.css");
+      });
 
       app.UseEndpoints(endpoints =>
       {

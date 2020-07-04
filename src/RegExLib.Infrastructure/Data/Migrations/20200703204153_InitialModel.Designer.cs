@@ -10,7 +10,7 @@ using RegExLib.Infrastructure.Data;
 namespace RegExLib.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200701203128_InitialModel")]
+    [Migration("20200703204153_InitialModel")]
     partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,29 +93,6 @@ namespace RegExLib.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Reaction");
-                });
-
-            modelBuilder.Entity("RegExLib.Core.Entities.ToDoItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDone")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ToDoItems");
                 });
 
             modelBuilder.Entity("RegExLib.Core.Entities.Expression", b =>

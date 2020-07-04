@@ -1,0 +1,20 @@
+﻿label[for="password_type"] {
+    display: none;
+}
+#password_type {
+    display: none;
+}
+
+label[for="client_id"] {
+    display: none;
+}
+#client_id {
+    display: none;
+}
+
+label[for="client_secret"] {
+    display: none;
+}
+#client_secret {
+    display: none;
+}
