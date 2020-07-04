@@ -43,18 +43,6 @@ namespace RegExLib.Web
       services.AddDbContext(connectionString);
       services.AddIdentityDbContext(identityConnectionString);
 
-      services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddDefaultUI()
-              .AddEntityFrameworkStores<AppIdentityDbContext>()
-              .AddDefaultTokenProviders();
-
-      ConfigureCookieSettings(services);
-
-      services.AddAutoMapper(typeof(Startup).Assembly);
-
-      services.AddControllersWithViews().AddNewtonsoftJson();
-      services.AddRazorPages();
-
       services.AddScoped<ITokenClaimsService, IdentityTokenClaimService>();
 
       var key = Encoding.ASCII.GetBytes(AuthorizationConstants.JWT_SECRET_KEY);
@@ -67,7 +55,7 @@ namespace RegExLib.Web
         })
         .AddJwtBearer(x =>
         {
-          x.RequireHttpsMetadata = true;
+          x.RequireHttpsMetadata = false;
           x.SaveToken = true;
           x.TokenValidationParameters = new TokenValidationParameters
           {
@@ -78,9 +66,23 @@ namespace RegExLib.Web
           };
         });
 
+      services.AddIdentity<ApplicationUser, IdentityRole>()
+              .AddDefaultUI()
+              .AddEntityFrameworkStores<AppIdentityDbContext>()
+              .AddDefaultTokenProviders();
+
+      ConfigureCookieSettings(services);
+
+      services.AddAutoMapper(typeof(Startup).Assembly);
+
+      services.AddControllersWithViews().AddNewtonsoftJson();
+      services.AddRazorPages();
+
+
+
       services.AddSwaggerGen(c =>
       {
-        c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"});
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
         c.EnableAnnotations();
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
@@ -129,8 +131,8 @@ namespace RegExLib.Web
       {
         config.Services = new List<ServiceDescriptor>(services);
 
-              // optional - default path to view services is /listallservices - recommended to choose your own path
-              config.Path = "/listservices";
+        // optional - default path to view services is /listallservices - recommended to choose your own path
+        config.Path = "/listservices";
       });
     }
 
@@ -143,8 +145,8 @@ namespace RegExLib.Web
     {
       services.Configure<CookiePolicyOptions>(options =>
       {
-              // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-              options.CheckConsentNeeded = context => true;
+        // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+        options.CheckConsentNeeded = context => true;
         options.MinimumSameSitePolicy = SameSiteMode.None;
       });
       services.ConfigureApplicationCookie(options =>
@@ -157,7 +159,7 @@ namespace RegExLib.Web
         options.Cookie = new CookieBuilder
         {
           IsEssential = true // required for auth to work without explicit user consent; adjust to suit your privacy policy
-              };
+        };
       });
     }
 

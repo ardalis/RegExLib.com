@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using RegExLib.Core.Constants;
 using RegExLib.SharedKernel.Interfaces;
 
 namespace RegExLib.Web.Endpoints.Expressions
 {
-  [Authorize(Roles = AuthorizationConstants.Roles.ADMINISTRATORS)]
+  [Authorize(Roles = AuthorizationConstants.Roles.ADMINISTRATORS, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
   public class Create : BaseAsyncEndpoint<CreateExpressionCommand, CreateExpressionResult>
   {
     private readonly IRepository _repository;

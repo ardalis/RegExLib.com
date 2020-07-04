@@ -1,6 +1,5 @@
 ﻿using RegExLib.Core.Entities;
 using Xunit;
-using Xunit.Sdk;
 
 namespace RegExLib.UnitTests.Core.Entities.ExpressionTests
 {
