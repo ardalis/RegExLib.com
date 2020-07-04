@@ -6,18 +6,10 @@ namespace RegExLib.UnitTests.Core.Entities.ExpressionTests
 {
   public class ExpressionToString
   {
-    private readonly string _title;
-    private readonly string _pattern;
-    private readonly string _description;
-    private readonly int _authorId;
-
-    public ExpressionToString()
-    {
-      _title = "title";
-      _pattern = "pattern";
-      _description = "description";
-      _authorId = 1;
-    }
+    private readonly string _title = "title";
+    private readonly string _pattern = "pattern";
+    private readonly string _description = "description";
+    private readonly int _authorId = 1;
 
     [Fact]
     public void ToStringReturnTitle()

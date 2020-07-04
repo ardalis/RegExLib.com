@@ -6,14 +6,8 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
 {
   public class AuthorToString
   {
-    private readonly string _username;
-    private readonly string _fullName;
-
-    public AuthorToString()
-    {
-      _username = "userAdmin";
-      _fullName = "Admin Admin";
-    }
+    private readonly string _username = "userAdmin";
+    private readonly string _fullName = "Admin Admin";
 
     [Fact]
     public void ToStringReturnFullName()

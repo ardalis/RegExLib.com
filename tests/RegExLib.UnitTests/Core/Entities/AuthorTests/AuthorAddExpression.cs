@@ -6,22 +6,12 @@ namespace RegExLib.UnitTests.Core.Entities.AuthorTests
 {
   public class AuthorAddExpression
   {
-    private readonly string _username;
-    private readonly string _fullName;
-    private readonly string _title;
-    private readonly string _pattern;
-    private readonly string _description;
-    private readonly int _authorId;
-
-    public AuthorAddExpression()
-    {
-      _username = "userAdmin";
-      _fullName = "Admin Admin";
-      _title = "title";
-      _pattern = "pattern";
-      _description = "description";
-      _authorId = 1;
-    }
+    private readonly string _username = "userAdmin";
+    private readonly string _fullName = "Admin Admin";
+    private readonly string _title = "title";
+    private readonly string _pattern = "pattern";
+    private readonly string _description = "description";
+    private readonly int _authorId = 1;
 
     [Fact]
     public void AddExpressionSuccessWithGivenValidExpression()
