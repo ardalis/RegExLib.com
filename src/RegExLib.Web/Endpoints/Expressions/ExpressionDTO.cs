@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using RegExLib.Core.Entities;
 
-namespace RegExLib.Web.ApiModels
+namespace RegExLib.Web.Endpoints.Expressions
 {
   // Note: doesn't expose events or behavior
   public class ExpressionDTO
@@ -16,17 +15,5 @@ namespace RegExLib.Web.ApiModels
     [Required]
     public string Description { get; set; } = null!;
 
-
-    public static ExpressionDTO FromExpression(Expression expression)
-    {
-      return new ExpressionDTO()
-      {
-        Id = expression.Id,
-        AuthorId = expression.AuthorId,
-        Title = expression.Title,
-        Pattern = expression.Pattern,
-        Description = expression.Description
-      };
-    }
   }
 }

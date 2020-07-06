@@ -93,29 +93,6 @@ namespace RegExLib.Infrastructure.Data.Migrations
                     b.ToTable("Reaction");
                 });
 
-            modelBuilder.Entity("RegExLib.Core.Entities.ToDoItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDone")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ToDoItems");
-                });
-
             modelBuilder.Entity("RegExLib.Core.Entities.Expression", b =>
                 {
                     b.HasOne("RegExLib.Core.Entities.Author", null)

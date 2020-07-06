@@ -1,18 +1,16 @@
-﻿using RegExLib.SharedKernel;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace RegExLib.Core.Entities
+namespace RegExLib.Web.Endpoints.Expressions
 {
-  public class Expression : BaseEntity
+  public class CreateExpressionCommand
   {
+    [Required]
     public int AuthorId { get; set; }
+    [Required]
     public string Title { get; set; } = string.Empty;
+    [Required]
     public string Pattern { get; set; } = string.Empty;
+    [Required]
     public string Description { get; set; } = string.Empty;
-
-    public Expression()
-    {
-    }
-
-    public override string ToString() => Title;
   }
 }

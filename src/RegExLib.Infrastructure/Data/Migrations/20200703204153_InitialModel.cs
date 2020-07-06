@@ -38,21 +38,6 @@ namespace RegExLib.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ToDoItems",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: false),
-                    IsDone = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ToDoItems", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Expression",
                 columns: table => new
                 {
@@ -87,9 +72,6 @@ namespace RegExLib.Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Reaction");
-
-            migrationBuilder.DropTable(
-                name: "ToDoItems");
 
             migrationBuilder.DropTable(
                 name: "Author");
