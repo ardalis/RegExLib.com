@@ -76,7 +76,7 @@ namespace RegExLib.Web
       services.AddAutoMapper(typeof(Startup).Assembly);
 
       services.AddControllersWithViews().AddNewtonsoftJson();
-      services.AddRazorPages();
+      //services.AddRazorPages();
 
 
 
@@ -178,10 +178,18 @@ namespace RegExLib.Web
       app.UseHttpsRedirection();
       app.UseStaticFiles();
 
+      // Allow any host CORS, change for production
+      app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+
+      app.UseHttpsRedirection();
+
       app.UseRouting();
       app.UseCookiePolicy();
 
-      app.UseAuthentication();
+      //app.UseAuthentication();
       app.UseAuthorization();
 
       // Enable middleware to serve generated Swagger as a JSON endpoint.
@@ -197,7 +205,7 @@ namespace RegExLib.Web
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapDefaultControllerRoute();
-        endpoints.MapRazorPages();
+        //endpoints.MapRazorPages();
       });
     }
   }

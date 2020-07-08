@@ -42,5 +42,6 @@ namespace RegExLib.Web.Endpoints.Authenticate
 
       return response;
     }
+
   }
 }
