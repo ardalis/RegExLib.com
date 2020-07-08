@@ -29,6 +29,15 @@ namespace RegExLib.Blazor.Client.Shared
       }
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+      if (firstRender)
+      {
+        await AuthenticateService.RefreshLoginInfo();
+        this.StateHasChanged();
+      }
+    }
+
     protected async Task LogoutClick()
     {
       await AuthenticateService.Logout();

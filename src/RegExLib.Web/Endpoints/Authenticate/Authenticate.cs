@@ -39,6 +39,7 @@ namespace RegExLib.Web.Endpoints.Authenticate
 
       response.Result = result.Succeeded;
       response.Token = await _tokenClaimsService.GetTokenAsync(request.Username);
+      response.Username = request.Username;
 
       return response;
     }

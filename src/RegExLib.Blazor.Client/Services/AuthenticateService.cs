@@ -37,9 +37,10 @@ namespace RegExLib.Blazor.Client.Services
       if (response.IsSuccessStatusCode)
       {
         await SaveToken(response);
+        await SaveUsername(response);
         await SetAuthorizationHeader();
 
-        UserName = user.Username;
+        UserName = await GetUsername();
         IsLoggedIn = true;
       }
     }
@@ -47,8 +48,15 @@ namespace RegExLib.Blazor.Client.Services
     public async Task Logout()
     {
       await _localStorage.RemoveItemAsync("authToken");
+      await _localStorage.RemoveItemAsync("username");
       UserName = null;
       IsLoggedIn = false;
+    }
+
+    public async Task RefreshLoginInfo()
+    {
+      IsLoggedIn = !string.IsNullOrEmpty(await GetToken());
+      UserName = await GetUsername();
     }
 
     private async Task SaveToken(HttpResponseMessage response)
@@ -59,11 +67,25 @@ namespace RegExLib.Blazor.Client.Services
       await _localStorage.SetItemAsync("authToken", jwt.Token);
     }
 
+    private async Task SaveUsername(HttpResponseMessage response)
+    {
+      var responseContent = await response.Content.ReadAsStringAsync();
+      var jwt = JsonConvert.DeserializeObject<AuthenticateResponse>(responseContent);
+
+      await _localStorage.SetItemAsync("username", jwt.Username);
+    }
+
     public async Task<string> GetToken()
     {
 
       var token = await _localStorage.GetItemAsync<string>("authToken");
       return token;
+    }
+
+    public async Task<string> GetUsername()
+    {
+      var username = await _localStorage.GetItemAsync<string>("username");
+      return username;
     }
 
     private async Task SetAuthorizationHeader()
