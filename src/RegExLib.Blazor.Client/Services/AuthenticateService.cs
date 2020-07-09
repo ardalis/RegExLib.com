@@ -16,8 +16,8 @@ namespace RegExLib.Blazor.Client.Services
   {
     private readonly HttpClient _httpClient;
     private readonly ILocalStorageService _localStorage;
-    public static bool IsLoggedIn { get; set; }
-    public static string UserName { get; set; }
+    public bool IsLoggedIn { get; set; }
+    public string UserName { get; set; }
 
     public AuthenticateService(HttpClient httpClient, ILocalStorageService localStorage)
     {

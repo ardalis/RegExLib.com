@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using RegExLib.Blazor.Client.Services;
 
 namespace RegExLib.Blazor.Client.Shared
@@ -13,21 +9,8 @@ namespace RegExLib.Blazor.Client.Shared
     [Inject] private NavigationManager NavigationManager { get; set; }
     [Inject] protected AuthenticateService AuthenticateService { get; set; }
 
-    protected bool IsLoggedIn
-    {
-      get
-      {
-        return AuthenticateService.IsLoggedIn;
-      }
-    }
-
-    protected string UserName
-    {
-      get
-      {
-        return AuthenticateService.UserName;
-      }
-    }
+    protected bool IsLoggedIn => AuthenticateService.IsLoggedIn;
+    protected string UserName => AuthenticateService.UserName;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

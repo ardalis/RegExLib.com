@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
-using RegExLib.Blazor.Client.Services;
-
-namespace RegExLib.Blazor.Client.Pages
+﻿namespace RegExLib.Blazor.Client.Pages
 {
   public partial class Profile
   {
