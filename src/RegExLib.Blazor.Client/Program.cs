@@ -21,8 +21,8 @@ namespace RegExLib.Blazor.Client
 
       builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-      builder.Services.AddBlazoredLocalStorage();
-      builder.Services.AddTransient<AuthenticateService>();
+      builder.Services.AddSingleton<ILocalStorageService, LocalStorageService>();
+      builder.Services.AddSingleton<AuthenticateService>();
 
 
       await builder.Build().RunAsync();
