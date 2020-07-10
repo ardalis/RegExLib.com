@@ -15,21 +15,16 @@ namespace RegExLib.FunctionalTests.Api.expressions
   {
     private readonly HttpClient _client;
 
-    private readonly string _title;
-    private readonly string _pattern;
-    private readonly string _description;
-    private readonly int _authorId;
+    private readonly string _title = "title";
+    private readonly string _pattern = "pattern";
+    private readonly string _description = "description";
+    private readonly int _authorId = 1;
 
     public ApiExpressionCreate(CustomWebApplicationFactory<Startup> factory)
     {
       _client = factory
         .WithWebHostBuilder(builder => builder.UseSolutionRelativeContentRoot(""))
         .CreateClient();
-
-      _title = "title";
-      _pattern = "pattern";
-      _description = "description";
-      _authorId = 1;
     }
 
     [Fact]
