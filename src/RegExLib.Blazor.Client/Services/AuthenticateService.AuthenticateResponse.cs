@@ -1,4 +1,4 @@
-﻿namespace RegExLib.Web.Endpoints.Authenticate
+﻿namespace RegExLib.Blazor.Client.Services
 {
   public class AuthenticateResponse
   {
