@@ -205,7 +205,7 @@ namespace RegExLib.Web
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapDefaultControllerRoute();
-        //endpoints.MapRazorPages();
+        endpoints.MapRazorPages();
       });
     }
   }
