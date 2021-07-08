@@ -175,7 +175,7 @@ namespace RegExLib.Web
         app.UseExceptionHandler("/Home/Error");
         app.UseHsts();
       }
-      app.UseHttpsRedirection();
+      //app.UseHttpsRedirection();
       app.UseStaticFiles();
 
       // Allow any host CORS, change for production
